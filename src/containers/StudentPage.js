@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import StudentSummary from './StudentSummary'
+import StudentSummary from '../components/StudentSummary'
 import { showStudentResult } from '../actions/result'
 import PropTypes from 'prop-types'
 
