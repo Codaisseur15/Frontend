@@ -1,0 +1,5 @@
+.QuizList {
+  flex: 1;
+  display: flex;
+  border: 2px pink solid;
+}
