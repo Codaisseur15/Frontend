@@ -1,14 +1,24 @@
 .quiz-list {
   flex: 1;
   display: flex;
-  border: 1px solid green;
+  flex-direction: column;
+  border: 1px solid grey;
   font-size: 15px;
 }
 
-.update-button {
+.edit-button {
   font-size: 8px;
   border-radius: 1px;
   background-color: pink;
   align-self: right;
   border: 1px black solid;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
 }
