@@ -1,11 +1,10 @@
-export const teacherResultList = [{
-    title: "GraphQl",
-    results:
-    {
-    classNumber: 15,
-    studentsNumber: 25,
-    studentsAnswers: 20,
-    avScore: 76,
-    totalScore: 100
+export const teacherResultList = [
+  {
+    id: 0,
+    name: "GraphQl",
+  results: {
+    className: 15,
+    avScore: 70
     }
-  }]
+}
+]
