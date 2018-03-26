@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
-import { connect } from 'react-redux'
-import './QuizListPage.css'
+import './QuizList.css'
 
 export default class QuizList extends PureComponent {
 
@@ -10,12 +9,12 @@ render() {
     {
       id:1,
       title:'Ruby on Rails',
-      score:'54/100',
+      score:'55/100',
     },
     {
       id:2,
       title:'JavaScript',
-      score:'60/10',
+      score:'60/100',
     },
     {
       id:3,
@@ -31,13 +30,13 @@ render() {
       id:5,
       title: 'WebSockets',
       score: '35/100',
-    }
+    },
   ]
 
 return (
-<div className = 'QuizList'>
+<div className = 'quiz-list'>
 <ol>
-  {QuizList.map(quiz => <li>{quiz.id} {quiz.title.id} {quiz.score.id} </li>)}
+  {QuizList.map(quiz => <li> {quiz.title} {quiz.score} </li>)}
 </ol>
 </div>
 )
