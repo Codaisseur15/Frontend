@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import TeacherResults from './containers/TeacherResults'
 
 //Pages
 import LoginPage from './containers/LoginPage'
@@ -14,8 +15,9 @@ class App extends Component {
         <div className='App'>
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
+          <TeacherResults />
         </div>
-      </Router> 
+      </Router>
     )
   }
 }
