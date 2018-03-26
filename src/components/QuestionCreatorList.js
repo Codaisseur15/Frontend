@@ -37,7 +37,7 @@ export default class QuestionCreatorList extends PureComponent {
 		return (
 			<div className='question-list'>
 				<ol>
-				{QuestionList.map(question => <li>{question.title} <ol><li>{question.awnsers.values()}</li></ol></li>)}
+					{QuestionList.map(question => <li>{question.title} <ol><li>{question.awnsers[0]}</li></ol></li>)}
 				</ol>
 			</div>
 		)
