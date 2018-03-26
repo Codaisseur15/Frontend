@@ -1,5 +1,4 @@
 .quiz-list {
-  flex: 1;
   display: flex;
   flex-direction: column;
   border: 1px solid grey;
@@ -8,9 +7,8 @@
 
 .edit-button {
   font-size: 8px;
-  border-radius: 1px;
-  background-color: pink;
-  align-self: right;
+  border-radius: 5px;
+  background-color: lightblue;
   border: 1px black solid;
 }
 

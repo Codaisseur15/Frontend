@@ -43,21 +43,19 @@ export default class QuizList extends PureComponent {
             <th>Score</th>
             <th>Edit</th>
           </tr>
-          {QuizList.map(quiz => <tr>
-            <td>{quiz.id}</td>
-            <td>{quiz.title}</td>
-            <td>{quiz.score}</td>
-            <td><button onClick = {this.handleClick} className = 'edit-button'>edit the quiz</button></td>
-            </tr>)}
+          {QuizList.map(quiz =>
+            <tr>
+              <td>{quiz.id}</td>
+              <td>{quiz.title}</td>
+              <td>{quiz.score}</td>
+              <td><button  className='edit-button'>edit the quiz</button></td>
+            </tr>
+          )}
         </table>
+        <button  className='add-button'>Add Quiz</button>
       </div>
     )
   }
-
-  handleClick = () => {
-    this.props.editQuiz()
-  }
 }
 
-//handleClick button with a link to create new quiz with href
-//code html link button google
+// onClick={window.location.href=`/edit/${quiz.id}`}
