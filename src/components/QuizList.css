@@ -1,0 +1,6 @@
+.quiz-list {
+  flex: 1;
+  display: flex;
+  border: 1px solid green;
+  font-size: 15px;
+}
