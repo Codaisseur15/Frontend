@@ -8,8 +8,8 @@ const devTools = window.devToolsExtension ? window.devToolsExtension() : (f) => 
 
 const enhancer = compose(
   applyMiddleware(ReduxThunk),
-  devTools
-)
+  devTools)
+
 
 const store = createStore(reducer, enhancer)
 
