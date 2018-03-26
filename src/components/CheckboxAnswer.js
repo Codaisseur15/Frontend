@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 class CheckboxAnswer extends PureComponent {
@@ -8,9 +8,11 @@ class CheckboxAnswer extends PureComponent {
 
   render() {
     return (
-      <CheckboxAnswer content="CheckboxAnswer" />
+      <form>
+        <h1>{ this.props.content }</h1>
+        <input id="checkBox" type="checkbox" />
+      </form>
     )
   }
 }
-
 export default CheckboxAnswer

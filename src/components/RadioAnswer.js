@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 class RadioAnswer extends PureComponent {
@@ -8,9 +8,11 @@ class RadioAnswer extends PureComponent {
 
   render() {
     return (
-      <RadioAnswer content="RadioAnswer" />
+      <form>
+        <h1>{ this.props.content }</h1>
+        <input type="radio" id="radioButton" />
+      </form>
     )
   }
 }
-
 export default RadioAnswer
