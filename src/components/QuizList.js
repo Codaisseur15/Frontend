@@ -33,12 +33,19 @@ render() {
     },
   ]
 
+
+
 return (
 <div className = 'quiz-list'>
 <ol>
-  {QuizList.map(quiz => <li> {quiz.title} {quiz.score} </li>)}
+  {QuizList.map(quiz => <li> {quiz.title} {quiz.score}
+    <button onClick = {this.handleClick} className = 'update-button'>update the quiz</button></li>)}
 </ol>
 </div>
 )
 }
+
+  handleClick = () => {
+    this.props.updateQuiz()
+  }
 }

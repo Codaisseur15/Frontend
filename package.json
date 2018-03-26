@@ -3,10 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "prop-types": "^15.6.1",
-=======
->>>>>>> 87f1d9f0e6a0e3ffcb3304643b69c4b95873aef9
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",

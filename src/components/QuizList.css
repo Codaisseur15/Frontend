@@ -4,3 +4,11 @@
   border: 1px solid green;
   font-size: 15px;
 }
+
+.update-button {
+  font-size: 8px;
+  border-radius: 1px;
+  background-color: pink;
+  align-self: right;
+  border: 1px black solid;
+}
