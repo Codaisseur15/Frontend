@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
-import ResultTeacher from './components/ResultTeacher'
-import QuizResultTeacher from './components/QuizResultTeacher'
+
+
 
 
 //Pages
@@ -11,8 +11,10 @@ import SubmitForm  from './components/submitButton'
 import ResultStudent from './components/ResultStudent'
 import QuizCreator from './containers/QuizCreator'
 import QuizList from './components/QuizList'
+import ResultTeacher from './components/ResultTeacher'
 
-
+//Styling
+import './App.css';
 
 class App extends Component {
   render() {
@@ -26,7 +28,6 @@ class App extends Component {
           <Route exact path="/submit" component={SubmitForm} />
           <Route exact path="/student_quiz_result" component={ResultStudent} />
           <Route exact path="/teacher/quiz" component={ResultTeacher} />
-          <Route exact path="/teacher/quiz/id" component={QuizResultTeacher} />
           <Route exact path="/quizList" component={QuizList} />
           <Route exact path="/" render={ () => <Redirect to="/quizList" /> } />
 
