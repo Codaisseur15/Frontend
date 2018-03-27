@@ -6,20 +6,14 @@ import {connect} from 'react-redux'
 
 class ResponseTeacher extends Component {
 
-  renderResponse = (quiz) => {
-    return (
-      <div>
-      <h2>Results</h2>
-      <p>Quiz ID {quiz.id}</p>
-      <p>Class # {quiz.course_id}</p>
-      <p>Response {quiz.Response}/</p>
-      <p>Score {quiz.score}</p>
-      </div>
-    )
-  }
+renderQuizresponses = (questionId, variantId) => {
+const {quizResponse} = this.props
+return quizResponse.filter(x => x.quizResponse[questionId].includes(variantId)).length
+}
 
   render() {
-    const {quizResponse} = this.props
+
+    const {quizResult} = this.props
 
     return (
       <div>
@@ -27,7 +21,19 @@ class ResponseTeacher extends Component {
           <h1 className="App-title">Quiz results</h1>
             </header>
               <div>
-                {quizResponse.map(quiz => this.renderResponse(quiz))}
+
+                <div>
+                <h2>Results</h2>
+                <p>Quiz ID {quizResult.id}</p>
+                <p>Class # {quizResult.course_id}</p>
+                <p>Answers: {quizResult.number_of_students}/</p>
+                <p>Score: {quizResult.av_score}</p>
+                </div>
+                Question 1:
+                Variant 1
+                {this.renderQuizresponses(1,2)}
+                <p/>
+
                 </div>
                 </div>
               );
@@ -35,8 +41,8 @@ class ResponseTeacher extends Component {
           }
 
 const mapStateToProps = state => ({
-  quizResult: state.quizResult,
-  quizResponse: state.quizResponse
+  quizResponse: state.quizResponse,
+  quizResult: state.quizResult
 })
 
 export default connect(mapStateToProps, { getTeacherResponse })(ResponseTeacher)

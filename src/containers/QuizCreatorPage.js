@@ -108,7 +108,9 @@ class QuizCreator extends PureComponent {
           <h5>Amount of Questions</h5>
             <div className='anwser-amount'>
               <button className='question-amount-button' onClick={_ => this.handleUpClick()}>+</button>
+              <div className='question-amount-container'>
               <p className='question-amount'>{this.state.QuestionAmount.length-1}</p>
+              </div>
               <button className='question-amount-button' onClick={_ => this.handleDownClick()}>-</button>
             </div>
           <button>Submit Quiz</button>
