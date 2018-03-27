@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import QuestionTitle from '../components/QuestionTitle'
 import Questions from '../components/Questions'
 
-class Question extends PureComponent {
+class Quiz extends PureComponent {
   static propTypes = {
     content: PropTypes.string.isRequired,
   }
@@ -18,4 +18,4 @@ class Question extends PureComponent {
   }
 }
 
-export default Question
+export default Quiz
