@@ -1,2 +1,5 @@
 export const SHOW_STUDENT_RESULT = 'SHOW_STUDENT_RESULT'
+
 export const SHOW_STUDENT_QUIZ = 'SHOW_STUDENT_QUIZ'
+
+export const EDIT_QUIZ = 'EDIT_QUIZ'
