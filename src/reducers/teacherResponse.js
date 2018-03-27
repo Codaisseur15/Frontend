@@ -9,7 +9,6 @@ export default (state = teacherResponses, { type, payload }) => {
         return {
           state
         }
-
     default:
       return state
   }

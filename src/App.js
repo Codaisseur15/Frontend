@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 //Pages
 import LoginPage from './containers/LoginPage'
 import Question from './containers/Question'
-import SubmitForm  from './components/SubmitButton'
 import ResultStudent from './components/ResultStudent'
 import QuizCreator from './containers/QuizCreator'
 import QuizList from './components/QuizList'
@@ -24,14 +23,11 @@ class App extends Component {
           <Route exact path="/Quizcreator" component={QuizCreator} />
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
           <Route exact path="/question" component={Question} />
-          <Route exact path="/responses" component={SubmitForm} />
           <Route exact path="/student_quiz_result" component={ResultStudent} />
           <Route exact path="/teacher/result" component={ResultTeacher} />
           <Route exact path="/teacher/response" component={ResponseTeacher} />
           <Route exact path="/quizList" component={QuizList} />
           <Route exact path="/" render={ () => <Redirect to="/quizList" /> } />
-
-
         </div>
       </Router>
     )

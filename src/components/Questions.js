@@ -151,7 +151,7 @@ const quizes = {
 }
 
 
-class CheckboxAnswer extends PureComponent {
+class Questions extends PureComponent {
   static PropTypes = {
       quizes: PropTypes.objectOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
@@ -191,4 +191,4 @@ class CheckboxAnswer extends PureComponent {
     )
   }
 }
-export default CheckboxAnswer
+export default Questions
