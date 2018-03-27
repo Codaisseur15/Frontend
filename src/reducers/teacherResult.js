@@ -9,7 +9,6 @@ export default (state = teacherResultList, { type, payload }) => {
       return {
         state
       }
-
     default:
       return state
   }

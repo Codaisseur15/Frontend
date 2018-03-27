@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { showTeacherResult } from '../actions/resultTeacher'
+import { showTeacherResult } from '../../actions/resultTeacher'
 import {connect} from 'react-redux'
+import OneResultTeacher from './OneResultTeacher'
 
 
 
@@ -9,11 +10,9 @@ class ResultTeacher extends Component {
   renderResults = (quiz) => {
     return (
       <div>
-      <h2>Results</h2>
-      <p>Quiz ID {quiz.id}</p>
-      <p>Class # {quiz.course_id}</p>
-      <p>Avarage score {quiz.av_score}/Max number of score</p>
-      <p># of students {quiz.number_of_students}/Number of students in class</p>
+      <OneResultTeacher
+      result_id={quiz.result_id}
+      />
       </div>
     )
   }
@@ -25,14 +24,14 @@ class ResultTeacher extends Component {
       <div>
         <header className="App-header">
           <h1 className="App-title">Quiz results</h1>
-        </header>
-<div>
-      {quizResult.map(quiz => this.renderResults(quiz))}
-</div>
-      </div>
-    );
-  }
-}
+            </header>
+              <div>
+                {quizResult.map(quiz => this.renderResults(quiz))}
+                </div>
+                </div>
+              );
+            }
+          }
 
 const mapStateToProps = state => ({
   quizResult: state.quizResult
