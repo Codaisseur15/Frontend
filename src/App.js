@@ -30,8 +30,6 @@ class App extends Component {
           <Route exact path="/teacher/result" component={ResultTeacher} />
           <Route exact path="/teacher/response" component={ResponseTeacher} />
           <Route exact path="/" render={ () => <Redirect to="/quizList" /> } />
-
-
         </div>
       </Router>
     )
