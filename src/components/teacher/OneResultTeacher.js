@@ -8,7 +8,7 @@ class OneResultTeacher extends Component {
 
   render() {
     const { quizResult } = this.props
-    const quiz  = quizResult.find(quiz => quiz.result_id === this.props.result_id)
+    const quiz = quizResult.find(quiz => quiz.result_id === this.props.result_id)
 
     return (
       <div>
@@ -33,6 +33,7 @@ class OneResultTeacher extends Component {
 
 const mapStateToProps = state => ({
     quizResult: state.quizResult
+
      })
 
 export default connect(mapStateToProps)(OneResultTeacher)
