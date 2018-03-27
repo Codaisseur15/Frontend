@@ -5,14 +5,15 @@ import {baseUrl} from '../constants'
 import { SUBMIT, SUBMIT_FAILED } from './types'
 
 
-export const SubmitForm = (courseId, studentId, quizResponse ) = ({dispatch}) =>
+export const SubmitForm = (courseId, studentId, quizId quizResponse ) = ({dispatch}) =>
           const course = courseId.id
           request
               .post(`${baseUrl}/responses`)
-              .send({ courseId, studentId, quizResponse})
+              .send({ courseId, studentId, quizId, quizResponse})
               .then(result => {
                 dispatch({
-                  type: SUBMIT
+                  type: SUBMIT,
+                  payload: result
                 })
               }
               .catch(err => {
