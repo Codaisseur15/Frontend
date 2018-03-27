@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import './QuizList.css'
+import QuizCreator from '../containers/QuizCreator'
 
 export default class QuizList extends PureComponent {
 
@@ -48,14 +49,12 @@ export default class QuizList extends PureComponent {
               <td>{quiz.id}</td>
               <td>{quiz.title}</td>
               <td>{quiz.score}</td>
-              <td><button onClick={window.location.href=`/edit/${quiz.id}`} className='edit-button'>edit the quiz</button></td>
+              <td><button onClick={_=>window.location.href=`/edit/${quiz.id}`} className='edit-button'>edit the quiz</button></td>
             </tr>
           )}
         </table>
-        <button  className='add-button'>Add Quiz</button>
+        <button onClick={_=>window.location.href=`/QuizCreator`} className='add-button'>Add Quiz</button>
       </div>
     )
   }
 }
-
-// onClick={window.location.href=`/edit/${quiz.id}`}
