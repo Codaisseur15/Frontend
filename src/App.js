@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import NavBar from './components/NavBar'
 
 
 //Pages
@@ -20,6 +21,7 @@ class App extends Component {
     return (
       <Router>
         <div className='App'>
+          <NavBar />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/Quizcreator" component={QuizCreator} />
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />

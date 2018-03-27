@@ -1,8 +1,7 @@
 import * as request from 'superagent'
 import {baseUrl} from '../constants'
-
-export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
-export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
+import { USER_LOGIN_SUCCESS } from './types'
+import { USER_LOGIN_FAILED } from './types'
 
 
 export const login = (email, password) => (dispatch) =>
@@ -26,3 +25,11 @@ export const login = (email, password) => (dispatch) =>
     		console.error(err)
     	}
     })
+
+	export const logout = () => {
+		   console.log("logout")
+		      return {
+		        type: USER_LOGOUT_SUCCESS,
+		        payload: null
+		      }
+		    }

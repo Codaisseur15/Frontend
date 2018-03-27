@@ -52,7 +52,7 @@ export default class QuizList extends PureComponent {
             </tr>
           )}
         </table>
-        <button onClick={_=>window.location.href=`/QuizCreator`} className='add-button'>Add Quiz</button>
+        <button onClick={_=>window.location.href=`/QuizCreator`} className='add-button'>Create Quiz</button>
       </div>
     )
   }
