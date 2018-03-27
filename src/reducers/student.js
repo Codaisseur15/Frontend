@@ -1,11 +1,12 @@
+//modify after getting backend datamodel
+
 import {SHOW_STUDENT_RESULT} from '../actions/types'
 
 const initialState = {
-  name: "yoonji",
-  title: "database",
-  score: 70,
-  class: "b-15"
+  score: 70
 }
+
+
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {

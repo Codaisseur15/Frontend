@@ -12,9 +12,6 @@ export default class StudentSummary extends PureComponent {
       <div>
         <h1>Student Information</h1>
         <li className="student">
-          <p className="name"> Name: {`${student.name}`}</p>
-          <p className="title"> Quiz_title: {`${student.title}`}</p>
-          <p className="class"> class: {`${student.class}`}</p>
           <p className="score"> score: {`${student.score}`}</p>
         </li>
       </div>
