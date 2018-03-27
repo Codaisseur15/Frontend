@@ -1,1 +1,2 @@
 export const SHOW_STUDENT_RESULT = 'SHOW_STUDENT_RESULT'
+export const EDIT_QUIZ = 'EDIT_QUIZ'
