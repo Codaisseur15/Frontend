@@ -1,11 +1,12 @@
 import {SHOW_TEACHER_RESULT} from '../actions/types'
-import { teacherResultList } from '../lib/teacherResultList'
+import {GET_ONE_TEACHER_RESULT} from '../actions/types'
+import { oneResult } from '../lib/teacherResultList'
 
 
 
-export default (state = teacherResultList, { type, payload }) => {
+export default (state = oneResult, { type, payload }) => {
   switch (type) {
-    case SHOW_TEACHER_RESULT:
+    case GET_ONE_TEACHER_RESULT:
       return {
         state
       }

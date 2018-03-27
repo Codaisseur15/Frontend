@@ -1,7 +1,6 @@
-
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-
+import './Questions.css'
 
 const quizes = {
     "id": 1,
@@ -174,16 +173,15 @@ class CheckboxAnswer extends PureComponent {
       {quizes.questions.map(q =>
         <li>
         <h3>{q.text}</h3>
-          <form>
-         {q.answer.map(a =>
-           <div>
-             <input id={q.type} name={q.type} type={q.type} />
-             <p>{a.text}</p>
-           </div>
-         )}
-         <input type="submit" value="Ok" />
-       </form>
-
+        <form>
+          {q.answer.map(a =>
+            <div>
+              <input id={q.type} name={q.type} type={q.type} />
+              <p>{a.text}</p>
+            </div>
+          )}
+          <input type="submit" value="Ok" />
+        </form>
         </li>)}
       </ol>
       </div>
