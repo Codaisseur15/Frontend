@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import './QuizList.css'
-import QuizCreator from '../containers/QuizCreator'
 
 export default class QuizList extends PureComponent {
 
