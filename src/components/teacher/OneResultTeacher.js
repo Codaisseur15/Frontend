@@ -1,9 +1,15 @@
+import * as request from 'superagent'
+import { getOneQuiz } from '../../actions/resultTeacher'
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 
 
+
 class OneResultTeacher extends Component {
+  componentWillMount() {
+    this.props.getOneQuiz(1)
+    }
 
 
   render() {
@@ -32,8 +38,9 @@ class OneResultTeacher extends Component {
 
 
 const mapStateToProps = state => ({
-    quizResult: state.quizResult
+    quizResult: state.quizResult,
+    quiz: state.quiz
 
      })
 
-export default connect(mapStateToProps)(OneResultTeacher)
+export default connect(mapStateToProps, { getOneQuiz })(OneResultTeacher)
