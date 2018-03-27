@@ -1,6 +1,21 @@
-import {SUBMIT} from '../actions/submitButton'
+import {SUBMIT, SUBMIT_FAILED} from '../actions/types'
 
-export default function (state = {}, action) {
+const initialState = {
+  courseId: 1,
+  studentId: 1,
+  quizId: 1,
+  quizes: "text"
+}
 
-		default: return state
-	}
+
+export default (state = initialState, { type, payload }) => {
+  switch (type) {
+    case SUBMIT:
+      return {
+        state
+      }
+
+    default:
+      return state
+  }
+}
