@@ -28,7 +28,7 @@ class QuizCreator extends PureComponent {
 const mapStateToProps = function (state) {
 	return {
 		currentUser: state.currentUser,
-    //error: state.login.error
+    error: state.login.error
 	}
 }
 
