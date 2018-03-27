@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import { showStudentQuiz } from '../actions/result'
 import PropTypes from 'prop-types'
 
-class QuizResultStudent extends PureComponent {
+export default class QuizResultStudent extends PureComponent {
   static propTypes = {
 //
   }
@@ -21,10 +21,3 @@ class QuizResultStudent extends PureComponent {
     )
   }
 }
-
-//It can be changed depends on student identification
-const mapStateToProps = state => ({
-  quizzes: state.studentQuiz
-})
-
-export default connect(mapStateToProps, { showStudentQuiz })(QuizResultStudent)

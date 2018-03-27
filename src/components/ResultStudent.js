@@ -5,11 +5,17 @@ import QuizResultStudent from './QuizResultStudent'
 import { showStudentResult, showStudentQuiz } from '../actions/result'
 import PropTypes from 'prop-types'
 
-//use one endpoint later, (and make sum score function) -> better
+
 
 class ResultStudent extends PureComponent {
   static propTypes = {
-//
+    showStudentResult: PropTypes.func.isRequired,
+    showStudentQuiz: PropTypes.func.isRequired
+  }
+
+  componentWillMount() {
+    this.props.showStudentQuiz(),
+    this.props.showStudentResult()
   }
 
   render() {
@@ -26,7 +32,7 @@ class ResultStudent extends PureComponent {
 }
 
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   student: state.student,
   studentQuiz: state.studentQuiz
 })
