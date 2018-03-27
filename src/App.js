@@ -12,7 +12,7 @@ import QuizList from './components/QuizList'
 import ResultTeacher from './components/teacher/ResultTeacher'
 import ResponseTeacher from './components/teacher/ResponseTeacher'
 
-//Styling
+
 import './App.css';
 
 class App extends Component {
@@ -37,4 +37,5 @@ class App extends Component {
     )
   }
 }
+
 export default App
