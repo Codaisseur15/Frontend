@@ -13,5 +13,4 @@ export default {
   quizResult,
   quizResponse,
   submitButton
-
 }
