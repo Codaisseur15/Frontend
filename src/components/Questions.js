@@ -165,6 +165,9 @@ class Questions extends PureComponent {
         })).isRequired
       })).isRequired
     }
+    state = {
+      edit: 'something'
+    }
 
   render() {
 
@@ -176,12 +179,18 @@ class Questions extends PureComponent {
         <form onSubmit={ (e)=> {onSubmit}}>
         {quizes.questions.map(q =>
           <li>
-          <h3>{q.text}</h3>
+          <h3>
+            {q.text}
+            {<a class="waves-effect waves-light btn">
+              <i class="material-icons left">edit</i>
+              edit
+            </a>}
+          </h3>
             {q.answer.map(a =>
               <div>
                 <label>
                 <input name={q.type} type={q.type} />
-                <span>{a.text}</span>
+                <span><input type='form'/>{a.text}</span>
                 </label>
               </div>
             )}
