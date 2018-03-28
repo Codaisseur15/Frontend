@@ -179,8 +179,10 @@ class Questions extends PureComponent {
           <h3>{q.text}</h3>
             {q.answer.map(a =>
               <div>
-                <input id={q.type} name={q.type} type={q.type} />
-                <p>{a.text}</p>
+                <label>
+                <input name={q.type} type={q.type} />
+                <span>{a.text}</span>
+                </label>
               </div>
             )}
           </li>)}
