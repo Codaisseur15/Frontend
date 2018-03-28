@@ -56,7 +56,7 @@ const quizes = {
         {
           "id": 2,
           "text": "What is CSS?",
-          "type": "checkbox",
+          "type": "radio",
             "answer": [
                 {
                     "correct": true,
@@ -154,11 +154,14 @@ const quizes = {
 class Questions extends PureComponent {
   static PropTypes = {
       quizes: PropTypes.objectOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         questions: PropTypes.arrayOf(PropTypes.shape({
+          id: PropTypes.number.isRequired,
           text: PropTypes.string.isRequired,
           type: PropTypes.string.isRequired,
           answer: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.number.isRequired,
             text: PropTypes.string.isRequired,
             correct: PropTypes.bool.isRequired
           })).isRequired
@@ -180,7 +183,7 @@ class Questions extends PureComponent {
             {q.answer.map(a =>
               <div>
                 <label>
-                <input name={q.type} type={q.type} />
+                <input name={q.id} type={q.type} />
                 <span>{a.text}</span>
                 </label>
               </div>
