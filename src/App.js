@@ -26,6 +26,7 @@ class App extends Component {
           <NavBar />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/logout" component={LogoutPage} />
+          <Route exact path="/quizlist" component={QuizList} />
           <Route exact path="/Quizcreator" component={QuizCreator} />
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
           <Route exact path="/quiz" component={Quiz} />
