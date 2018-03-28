@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import "./NavBar.css";
 import { connect } from "react-redux";
 // import { Link } from "react-router-dom";
 import { logout } from "../actions/users";
