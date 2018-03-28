@@ -6,10 +6,13 @@
 }
 
 .edit-button {
-  font-size: 8px;
-  border-radius: 5px;
-  background-color: lightblue;
-  border: 1px black solid;
+  font-size: 20px;
+  /* border-radius: 5px; */
+  background-color: lightgrey;
+  width: 100%;
+  height: 100%;
+  /* border: 1px black solid; */
+  cursor: pointer;
 }
 
 table {
@@ -19,4 +22,13 @@ table {
 
 table, th, td {
     border: 1px solid black;
+    text-align: center;
+}
+
+.title {
+  text-align: left;
+}
+
+h2 {
+  text-align: center;
 }

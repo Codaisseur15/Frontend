@@ -11,7 +11,7 @@ class Quiz extends PureComponent {
   render() {
     return (
       <div>
-        <QuestionTitle content="Question Title Here" />
+        <QuestionTitle content="Quiz Title Here" />
         <Questions />
       </div>
     )

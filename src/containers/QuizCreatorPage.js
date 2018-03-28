@@ -47,7 +47,6 @@ class QuizCreator extends PureComponent {
         let question = Question - 1
         return(
         <tr key={key}>
-          <th>{question}</th>
           <th>
             <input type='form' className='question-form'/>
             <div className='row'>
@@ -95,12 +94,13 @@ class QuizCreator extends PureComponent {
         <input type='form' className='quiz-name'/>
         </div>
         <table className='quiz-table'>
-        <tbody>
+        <thead>
           <tr>
-            <th>Id</th>
             <th>Question</th>
             <th>Anwsers</th>
           </tr>
+        </thead>
+        <tbody>
           {this.renderTable(this.state.QuestionAmount)}
         </tbody>
         </table>
