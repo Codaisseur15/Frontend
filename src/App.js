@@ -8,9 +8,8 @@ import LoginPage from './containers/LoginPage'
 import LogoutPage from './containers/LogoutPage'
 import Quiz from './containers/Quiz'
 import SubmitForm  from './components/SubmitButton'
-import ResultStudent from './components/ResultStudent'
 import QuizList from './components/QuizList'
-import Student from './containers/StudentPage'
+import StudentPage from './containers/StudentPage'
 import QuizCreator from './containers/QuizCreatorPage'
 import ResultTeacher from './components/teacher/ResultTeacher'
 import ResponseTeacher from './components/teacher/ResponseTeacher'
@@ -31,7 +30,7 @@ class App extends Component {
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
           <Route exact path="/quiz" component={Quiz} />
           <Route exact path="/responses" component={SubmitForm} />
-          <Route exact path="/student_quiz_result" component={ResultStudent} />
+          <Route exact path="/student/result" component={StudentPage} />
           <Route exact path="/teacher/result" component={ResultTeacher} />
           <Route exact path="/teacher/1" component={ResponseTeacher} />
           <Route exact path="/" render={ () => <Redirect to="/quizList" /> } />
