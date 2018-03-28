@@ -16,7 +16,6 @@ class ResultTeacher extends Component {
       </div>
     )
   }
-
   render() {
     const {quizResult} = this.props
 
