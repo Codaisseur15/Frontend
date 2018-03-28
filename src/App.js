@@ -29,7 +29,7 @@ class App extends Component {
           <Route exact path="/quizlist" component={QuizList} />
           <Route exact path="/Quizcreator" component={QuizCreator} />
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
-          <Route exact path="/quiz" component={Quiz} />
+          <Route exact path="/quiz/course=:courseId" component={Quiz} />
           <Route exact path="/responses" component={SubmitForm} />
           <Route exact path="/student_quiz_result" component={ResultStudent} />
           <Route exact path="/teacher/result" component={ResultTeacher} />

@@ -1,8 +1,10 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import QuestionTitle from '../components/QuestionTitle'
-import CheckboxAnswer from '../components/CheckboxAnswer'
-import RadioAnswer from '../components/RadioAnswer'
+import Questions from '../components/Questions'
+//import 2 actions (submit, showstudentquiz)
+//showstudentquiz => componentWillMount (this doesnt need trigger button)
+//submit => connect to redux, connect submit action to button, and dispatch
 
 class Question extends PureComponent {
   static propTypes = {
@@ -13,8 +15,7 @@ class Question extends PureComponent {
     return (
       <div>
         <QuestionTitle content="Question Title Here" />
-        <CheckboxAnswer content="CheckboxAnswer Test" />
-        <RadioAnswer content="RadioAnswer Test" />
+        <Questions />
       </div>
     )
   }
