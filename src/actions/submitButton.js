@@ -1,11 +1,10 @@
-import React from 'react'
-import { connect } from 'react-redux'
+
 import {responsesUrl} from '../constants'
 
 import { SUBMIT, SUBMIT_FAILED } from './types'
 
 
-export const SubmitForm = (courseId, studentId, quizId quizResponse ) = ({dispatch}) =>
+export const submitForm = (courseId, studentId, quizId, quizResponse ) = (dispatch) =>
           const course = courseId.id
           request
               .post(`${responsesUrl}/responses`)
