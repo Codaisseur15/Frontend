@@ -12,11 +12,10 @@ class OneResultTeacher extends Component {
     return (
       <div>
         <header className="App-header">
-          <h1 className="App-title">Quiz results</h1>
             </header>
               <div>
               <div>
-              <h2>Results</h2>
+              <h2>Results for class</h2>
               <p>Quiz ID {quizResult.quizId}</p>
               <p>Class # {quizResult.courseId}</p>
               <p>Avarage score {quizResult.average}/Max number of score</p>

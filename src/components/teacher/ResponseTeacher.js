@@ -34,7 +34,6 @@ return studentQuiz.question.map(q => {
     <h3>{q.text}</h3>{
       q.answer.map(a =>
         <div>
-          <input id={q.type} name={q.type} type={q.type} />
           <p>{q.text}</p>
         </div>
       )}
