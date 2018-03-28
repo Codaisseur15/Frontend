@@ -41,28 +41,22 @@ class QuestionCreator extends PureComponent {
     if(QuestionType === 'multiple choice') {
       return(x.map((Anwser, key) => {
         if(Anwser !== 0){return(
-          <tbody key={key}>
-            <tr>
-                <th>{Anwser - 1}</th>
+            <tr key={key}>
                 <th><input type='checkbox'/>
                 <input type='form' className='question-form'/></th>
                 <th><input type='checkbox'/></th>
             </tr>
-          </tbody>
         )}
       }))
     }
     if(QuestionType === 'single choice') {
       return(x.map((Anwser, key) => {
         if(Anwser !== 0){return(
-          <tbody key={key}>
-            <tr>
-              <th>{Anwser - 1}</th>
+            <tr key={key}>
               <th><input type="radio" name={QuestionId}/>
               <input type='form' className='question-form'/></th>
               <th><input type="radio" name={`correct${QuestionId}`}/></th>
             </tr>
-          </tbody>
         )}
       }))
     }
@@ -72,14 +66,15 @@ class QuestionCreator extends PureComponent {
 		return (
 			<div className='quiz-container'>
         <table className='question-table'>
-          <tbody>
+          <thead>
             <tr>
-              <th>Id</th>
               <th>Anwser</th>
               <th>Correct?</th>
             </tr>
-          </tbody>
+          </thead>
+          <tbody>
           {this.renderTable(this.state.AnwserAmount)}
+          </tbody>
         </table>
           <div className='anwser-amount'>
             <h5>Amount of Anwsers</h5>
