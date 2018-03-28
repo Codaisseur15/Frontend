@@ -1,10 +1,9 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import QuestionTitle from '../components/QuestionTitle'
-import CheckboxAnswer from '../components/CheckboxAnswer'
-import RadioAnswer from '../components/RadioAnswer'
+import Questions from '../components/Questions'
 
-class Question extends PureComponent {
+class Quiz extends PureComponent {
   static propTypes = {
     content: PropTypes.string.isRequired,
   }
@@ -13,11 +12,10 @@ class Question extends PureComponent {
     return (
       <div>
         <QuestionTitle content="Question Title Here" />
-        <CheckboxAnswer content="CheckboxAnswer Test" />
-        <RadioAnswer content="RadioAnswer Test" />
+        <Questions />
       </div>
     )
   }
 }
 
-export default Question
+export default Quiz
