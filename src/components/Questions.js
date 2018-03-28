@@ -167,22 +167,25 @@ class CheckboxAnswer extends PureComponent {
     }
 
   render() {
+
+    const { onSubmit } = this.props
+
     return (
       <div>
       <ol>
-      {quizes.questions.map(q =>
-        <li>
-        <h3>{q.text}</h3>
-        <form>
-          {q.answer.map(a =>
-            <div>
-              <input id={q.type} name={q.type} type={q.type} />
-              <p>{a.text}</p>
-            </div>
-          )}
-          <input type="submit" value="Ok" />
+        <form onSubmit={ (e)=> {onSubmit}}>
+        {quizes.questions.map(q =>
+          <li>
+          <h3>{q.text}</h3>
+            {q.answer.map(a =>
+              <div>
+                <input id={q.type} name={q.type} type={q.type} />
+                <p>{a.text}</p>
+              </div>
+            )}
+          </li>)}
+          <input className = "submit" type="submit" value="Submit" />
         </form>
-        </li>)}
       </ol>
       </div>
     )
