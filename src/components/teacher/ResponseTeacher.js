@@ -24,7 +24,10 @@ return quizResponse.filter(x =>
 }
 
 renderQuizQuestion = () => {
+
 const {studentQuiz} = this.props
+  if (!studentQuiz.question) return null
+
 return studentQuiz.question.map(q => {
   return (
     <li>
@@ -45,12 +48,16 @@ return studentQuiz.question.map(q => {
     const {quizResult} = this.props
     const {studentQuiz} = this.props
 
+
     return (
       <div>
               <OneResultTeacher quizResult={quizResult}/>
                 Question 1:
                 Variant 1
                 {this.renderQuizresponses(1,1)}
+                <h1>Quiz questions</h1>
+                {this.renderQuizQuestion()}
+
                 <p/>
 
                 </div>

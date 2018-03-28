@@ -33,7 +33,7 @@ class App extends Component {
           <Route exact path="/responses" component={SubmitForm} />
           <Route exact path="/student_quiz_result" component={ResultStudent} />
           <Route exact path="/teacher/result" component={ResultTeacher} />
-          <Route exact path="/teacher/response" component={ResponseTeacher} />
+          <Route exact path="/teacher/1" component={ResponseTeacher} />
           <Route exact path="/" render={ () => <Redirect to="/quizList" /> } />
         </div>
       </Router>
