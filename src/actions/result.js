@@ -16,7 +16,7 @@ export const showStudentResult = () => {
 
 export const showStudentQuiz = () => (dispatch) => {
   request
-    .get(`${baseUrl}/quizzes/1`)
+    .get(`${baseUrl}/quizzes/id`)
     .then(result => {
       dispatch({
         type: SHOW_STUDENT_QUIZ,
