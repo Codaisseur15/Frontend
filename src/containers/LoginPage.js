@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-//import {login} from '../../actions/users'
+import {login} from '../actions/users'
 import LoginForm from '../components/LoginForm'
 import {Redirect} from 'react-router-dom'
 
@@ -30,8 +30,8 @@ class LoginPage extends PureComponent {
 const mapStateToProps = function (state) {
 	return {
 		currentUser: state.currentUser,
-    //error: state.login.error
+    error: state.login.error
 	}
 }
 
-export default connect(mapStateToProps)(LoginPage)
+export default connect(mapStateToProps, {login} )(LoginPage)
