@@ -1,6 +1,4 @@
 import * as request from 'superagent'
-
-
 import { SHOW_STUDENT_RESULT } from './types'
 import { SHOW_STUDENT_QUIZ } from './types'
 
