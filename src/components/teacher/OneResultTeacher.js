@@ -5,11 +5,9 @@ import {connect} from 'react-redux'
 
 class OneResultTeacher extends Component {
 
-
-
   render() {
     const { quizResult } = this.props
-    const quiz = quizResult.find(quiz => quiz.result_id === this.props.result_id)
+
 
     return (
       <div>
@@ -19,10 +17,10 @@ class OneResultTeacher extends Component {
               <div>
               <div>
               <h2>Results</h2>
-              <p>Quiz ID {quiz.id}</p>
-              <p>Class # {quiz.course_id}</p>
-              <p>Avarage score {quiz.av_score}/Max number of score</p>
-              <p># of students {quiz.number_of_students}/Number of students in class</p>
+              <p>Quiz ID {quizResult.quizId}</p>
+              <p>Class # {quizResult.courseId}</p>
+              <p>Avarage score {quizResult.average}/Max number of score</p>
+              <p># of students {quizResult.numberOfTakers}/Number of students in class</p>
               </div>
 
                 </div>
@@ -32,10 +30,4 @@ class OneResultTeacher extends Component {
           }
 
 
-const mapStateToProps = (state, props) => ({
-    quizResult: state.quizResult,
-    studentQuiz: state.studentQuiz
-
-     })
-
-export default connect(mapStateToProps, { showStudentQuiz })(OneResultTeacher)
+export default OneResultTeacher
