@@ -1,9 +1,9 @@
 import * as request from 'superagent'
-import { SHOW_TEACHER_RESULT } from './types'
-import { GET_ONE_TEACHER_RESULT } from './types'
+import { SHOW_TEACHER_RESULT, ALL_TEACHER_RESULT } from './types'
 import { GET_TEACHER_RESPONSE } from './types'
 
 const apiUrl = 'http://localhost:4001'
+const baseUrl = 'http://localhost:4008'
 
 
 export const showTeacherResult = () => (dispatch) => {
@@ -16,6 +16,18 @@ export const showTeacherResult = () => (dispatch) => {
     })
   })
 .catch(err => console.error(err))
+}
+
+export const allTeacherResult = () => (dispatch) => {
+  request
+    .get(`${baseUrl}/quizzes/`)
+    .then(result => {
+      dispatch({
+        type: ALL_TEACHER_RESULT,
+        payload: result.body
+      })
+    })
+    .catch(err => console.error(err))
 }
 
 
