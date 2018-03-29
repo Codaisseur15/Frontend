@@ -11,7 +11,7 @@ class OneResultTeacher extends Component {
     return (
 
               <div>
-              <h2>Results for class {quizResult.courseId}</h2>
+              <h3>Results for class {quizResult.courseId}</h3>
               <h4>Avarage score {quizResult.average}% based on {' '}
               {quizResult.numberOfTakers} responses</h4>
               </div>

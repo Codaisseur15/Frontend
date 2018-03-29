@@ -1,3 +1,7 @@
 .correct {
   background-color: #ccff66;
+  font-size: 20px;
+}
+.flex {
+  display: flex;
 }

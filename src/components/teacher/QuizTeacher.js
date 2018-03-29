@@ -17,6 +17,7 @@ class QuizTeacher extends Component {
         if (!teacherQuiz) return null
 
     return (
+
       <div>
       {teacherQuiz.map(x => {
         return (

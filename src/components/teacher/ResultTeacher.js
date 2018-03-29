@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { allTeacherResult } from '../../actions/resultTeacher'
 import {connect} from 'react-redux'
+import '../../App.css';
 
 
 class ResultTeacher extends Component {
@@ -14,16 +15,14 @@ class ResultTeacher extends Component {
     if (!allResult[0]) return null
 
     return (
-      <div class='container center-align'>
+      <div>
         <h1>All quizzes</h1>
-
-
               {allResult.map(x => {
                 return (
                   <div>
-                  <h1>
+                  <h3>
                     {x.title}
-                    </h1>
+                    </h3>
                   <button class='btn waves-effect waves-light hoverable'
                   onClick={_=>window.location.href=`/teacher/${x.id}`}
                   >

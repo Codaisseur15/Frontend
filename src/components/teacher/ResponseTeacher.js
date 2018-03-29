@@ -22,9 +22,11 @@ class ResponseTeacher extends Component {
 
 renderQuizresponses(questionId, variantId) {
   const {response} = this.props
+  const {quizResult} = this.props
 
   return response.filter(x => {
     const { quizResponse } = x
+    if (x.courseId === quizResult.courseId)
 
     return quizResponse[questionId]
     .includes(variantId)
@@ -34,6 +36,7 @@ renderQuizresponses(questionId, variantId) {
 renderQuizQuestion() {
 
 const {studentQuiz} = this.props
+const {quizResult} = this.props
   if (!studentQuiz.question) return null
 
 return studentQuiz.question.map(q => {
@@ -44,18 +47,17 @@ return studentQuiz.question.map(q => {
         if (a.correct === true)
         return (
           <div>
-          <p className='correct'>{a.text}</p>
-          <p>
-          {this.renderQuizresponses(q.id, a.id)}
-          answers</p>
+          <p className='correct'>{a.text}{'            '}
+          ({this.renderQuizresponses(q.id, a.id)/quizResult.numberOfTakers*100}
+          % of answers)</p>
         </div>)
 
         else
           return (<div>
-          <p className='wrong'>{a.text}</p>
-          <p>
-          {this.renderQuizresponses(q.id, a.id)}
-          answers</p>
+          <p className='wrong'>{a.text}{'  '}
+          ({this.renderQuizresponses(q.id, a.id)/quizResult.numberOfTakers*100}
+          % of answers)
+          </p>
         </div>)
       })}
     </li>
@@ -75,7 +77,7 @@ return studentQuiz.question.map(q => {
       <div class='container center-align'>
               <OneResultTeacher quizResult={quizResult}/>
 
-                <h1>{studentQuiz.title} quiz questions</h1>
+                <h3>{studentQuiz.title} quiz questions</h3>
                 {this.renderQuizQuestion()}
                 <p/>
                 </div>
