@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-const quizes = {
+const quiz = {
     "id": 1,
     "title": "HTML",
     "questions": [
@@ -151,7 +151,7 @@ const quizes = {
 
 class QuestionTitle extends PureComponent {
   static PropTypes = {
-      quizes: PropTypes.objectOf(PropTypes.shape({
+      quiz: PropTypes.objectOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired
       }))
@@ -159,7 +159,7 @@ class QuestionTitle extends PureComponent {
 
   render() {
     return (
-      <h1>{ quizes.title }</h1>
+      <h1>{ quiz.title }</h1>
     )
   }
 }

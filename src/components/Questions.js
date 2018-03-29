@@ -158,7 +158,7 @@ var quizResponse={}
 class Questions extends PureComponent {
   state = {courseId: this.props.match.params.courseId}
   static PropTypes = {
-      quizes: PropTypes.objectOf(PropTypes.shape({
+      quiz: PropTypes.objectOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         questions: PropTypes.arrayOf(PropTypes.shape({
