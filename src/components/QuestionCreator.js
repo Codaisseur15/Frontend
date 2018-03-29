@@ -41,7 +41,7 @@ class QuestionCreator extends PureComponent {
     if(QuestionType === 'multiple choice') {
       return(x.map((Anwser, key) => {
         if(Anwser !== 0){return(
-            <li key={key} class='collection-item'>
+            <li key={key} class='collection-item row'>
               <input type='text' placeholder='Anwser' class='col s7 offset-s1'/>
               <label>
                 <input type="checkbox" name={`correct${QuestionId}`}/>
@@ -54,7 +54,7 @@ class QuestionCreator extends PureComponent {
     if(QuestionType === 'single choice') {
       return(x.map((Anwser, key) => {
         if(Anwser !== 0){return(
-            <li key={key} class='collection-item'>
+            <li key={key} class='collection-item row'>
               <input type='text' placeholder='Anwser' class='col s7 offset-s1'/>
               <label>
                 <input type="radio" name={`correct${QuestionId}`}/>
