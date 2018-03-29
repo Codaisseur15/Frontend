@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import SubmitForm from './SubmitButton'
-import {submitForm} from '../actions/submitButton'
+import {submitForm,showQuiz} from '../actions/submitButton'
 import './Questions.css'
 import {withRouter} from 'react-router'
 import {connect} from 'react-redux'
+
 const quizes = {
     "id": 1,
     "title": "HTML",
@@ -154,14 +155,14 @@ const quizes = {
 }
 var quizResponse={}
 
-
 class Questions extends PureComponent {
-  state = {courseId: this.props.match.params.courseId}
-  static PropTypes = {
+  state = {courseId: this.props.match.params.courseId,
+          quizId: this.props.match.params.quizId}
+  static propTypes = {
       quiz: PropTypes.objectOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
-        questions: PropTypes.arrayOf(PropTypes.shape({
+        question: PropTypes.arrayOf(PropTypes.shape({
           id: PropTypes.number.isRequired,
           text: PropTypes.string.isRequired,
           type: PropTypes.string.isRequired,
@@ -177,8 +178,7 @@ class Questions extends PureComponent {
 
     handleSubmit = (e) => {
   		e.preventDefault()
-      this.setState({...this.state,quizId:quizes.id})
-  		this.props.submitForm({...this.state,quizId:quizes.id})
+  		this.props.submitForm(this.state)
       console.log(this.state);
   	}
 
@@ -197,33 +197,46 @@ class Questions extends PureComponent {
       console.log(this.state);
     }
 
-    state = {}
+    // state = {}
+    //
+    // handleChange = (event, answerId) => {
+    //   const {name} = event.target
+    //   if (this.state[name]) {
+    //     this.setState({
+    //       [name]: [...this.state[name], answerId]
+    //     })
+    //   } else {
+    //     this.setState({
+    //       [name]: [answerId]
+    //     })
+    //   }
+    // }
 
-    handleChange = (event, answerId) => {
-      const {name} = event.target
-      if (this.state[name]) {
-        this.setState({
-          [name]: [...this.state[name], answerId]
-        })
-      } else {
-        this.setState({
-          [name]: [answerId]
-        })
-      }
-    }
+    // handleSubmit = (e) => {
+  	// 	e.preventDefault()
+  	// 	console.log(this.state)
+  	// }
 
-    handleSubmit = (e) => {
-  		e.preventDefault()
-  		console.log(this.state)
-  	}
 
+  componentWillMount() {
+    //console.log('==================');
+    //console.log(this.props.match.params.quizId);
+    //console.log('---------------');
+    this.props.showQuiz(this.props.match.params.quizId)
+  }
   render() {
-    quizes.question.map(q=>
+  //  console.log('==================');
+  //  console.log(this.props.quiz.question);
+  //  console.log('---------------');
+  if (this.props.quiz.question) {
+    console.log(this.props.quiz);
+    this.props.quiz.question.map(q=>
       {console.log(q.id);
       quizResponse[q.id]=[]
       return 0}
     )
-    console.log(quizResponse, this.props.match.params.courseId);
+
+    //console.log(quizResponse, this.props.match.params.courseId);
 
     //const { onSubmit } = this.props
 
@@ -231,7 +244,7 @@ class Questions extends PureComponent {
       <div>
       <ol>
         <form onSubmit={this.handleSubmit}>
-        {quizes.question.map(q =>
+        {this.props.quiz.question.map(q =>
           <li>
           <h3>{q.text}</h3>
             {q.answer.map(a =>
@@ -250,8 +263,16 @@ class Questions extends PureComponent {
       </div>
     )
   }
+  return null
+  }
+}
+
+const mapStateToProps = ({showQuiz}) => {
+  return {
+    quiz: showQuiz
+  }
 }
 //export default Questions
 export default withRouter(
-  connect(null,{submitForm})(Questions)
+  connect(mapStateToProps,{submitForm, showQuiz})(Questions)
 )

@@ -8,6 +8,7 @@ import allTeacherResult from './allTeacherResult'
 import teacherQuiz from './teacherQuiz'
 
 import submitButton from './submitButton'
+import showQuiz from './showQuiz'
 
 import login from './login'
 import currentUser from './currentUser'
@@ -19,6 +20,7 @@ export default {
   quizResult,
   quizResponse,
   submitButton,
+  showQuiz,
   login,
   currentUser,
   allTeacherResult,
