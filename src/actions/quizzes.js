@@ -6,11 +6,12 @@ export const SHOW_QUIZZES = 'SHOW_QUIZZES'
 export const UPDATE_QUIZ_SUCCESS = 'UPDATE_GAME_SUCCESS'
 
 export const getQuizzes = () => (dispatch, getState) => {
-  const state = getState()
-  const jwt = state.currentUser.jwt
+  // const state = getState()
+  // const jwt = state.currentUser.jwt
 
   request
     .get(`${baseUrl}/quizzes`)
+    // .set('Authorization', `Bearer ${jwt}`)
     .then(result => {
       dispatch({
         type: SHOW_QUIZZES,
