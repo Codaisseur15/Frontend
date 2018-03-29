@@ -169,6 +169,26 @@ class Questions extends PureComponent {
       })).isRequired
     }
 
+    state = {}
+
+    handleChange = (event, answerId) => {
+      const {name} = event.target
+      if (this.state[name]) {
+        this.setState({
+          [name]: [...this.state[name], answerId]
+        })
+      } else {
+        this.setState({
+          [name]: [answerId]
+        })
+      }
+    }
+
+    handleSubmit = (e) => {
+  		e.preventDefault()
+  		console.log(this.state)
+  	}
+
   render() {
 
     const { onSubmit } = this.props
@@ -176,14 +196,14 @@ class Questions extends PureComponent {
     return (
       <div>
       <ol>
-        <form onSubmit={ (e)=> {onSubmit}}>
+        <form onSubmit={this.handleSubmit}>
         {quizes.questions.map(q =>
           <li>
           <h3>{q.text}</h3>
             {q.answer.map(a =>
               <div>
                 <label>
-                <input name={q.id} type={q.type} />
+                <input name={q.id} type={q.type} answer={a.id} onChange={e => this.handleChange(e, a.id)} />
                 <span>{a.text}</span>
                 </label>
               </div>
