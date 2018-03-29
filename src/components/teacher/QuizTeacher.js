@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { getTeacherResponse, showTeacherResult,
-  showTeacherQuiz } from '../../actions/resultTeacher'
+import { showTeacherQuiz } from '../../actions/resultTeacher'
 import {connect} from 'react-redux'
 import OneResultTeacher from './OneResultTeacher'
 import {withRouter} from 'react-router'
@@ -19,7 +18,6 @@ class QuizTeacher extends Component {
 
     return (
       <div>
-      <h1>Quiz #{this.props.match.params.quizId}</h1>
       {teacherQuiz.map(x => {
         return (
           <div>
@@ -42,7 +40,6 @@ class QuizTeacher extends Component {
           }
 
 const mapStateToProps = state => ({
-
   teacherQuiz: state.teacherQuiz
 })
 

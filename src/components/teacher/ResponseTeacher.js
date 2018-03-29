@@ -75,7 +75,7 @@ return studentQuiz.question.map(q => {
       <div class='container center-align'>
               <OneResultTeacher quizResult={quizResult}/>
 
-                <h1>Quiz questions</h1>
+                <h1>{studentQuiz.title} quiz questions</h1>
                 {this.renderQuizQuestion()}
                 <p/>
                 </div>
