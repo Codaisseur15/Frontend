@@ -45,20 +45,31 @@ class QuizCreator extends PureComponent {
     return(x.map((Question, key) => {
       if(Question !== 0){
         let question = Question - 1
+        let tempType = 0
+        if (this.state.QuestionType[question] === 'multiple choice'){
+        tempType = 'mpC'}
+        if (this.state.QuestionType[question] === 'single choice'){
+        tempType = 'sC'}
         return(
-        <tr key={key}>
-          <th>
-            <input type='form' className='question-form'/>
-            <div className='row'>
-              <h5 className= 'h5y'>{this.state.QuestionType[question]}</h5>
-              <label className="switch" key={key}>
-                <input type="checkbox" onClick={_ => this.stateCheck(question)}/>
-                <span className="slider"></span>
-              </label>
+        <li key={key} class='row collection-item'>
+          <div class='container'>
+            <input type='text' class='col s12 offset-s1' placeholder='Question' id='Question'/>
+            <div class='container'>
+            <div class='row col s8'>
+              <span class='col s1'>{this.state.QuestionType[question]}</span>
+              <div class='switch'>
+                <label>
+                  <input type="checkbox" onClick={_ => this.stateCheck(question)}/>
+                  <span class="lever"></span>
+                </label>
+              </div>
+              </div>
+              </div>
             </div>
-          </th>
-          <th><QuestionCreator QuestionId={question} QuestionType={this.state.QuestionType[question]}/></th>
-        </tr>
+          <div class='container col s12'>
+            <QuestionCreator QuestionId={question} QuestionType={this.state.QuestionType[question]}/>
+          </div>
+        </li>
       )}
     }))
   }
@@ -87,34 +98,29 @@ class QuizCreator extends PureComponent {
 
 	render() {
 		return (
-			<div className='quiz-container'>
+			<div class='container center-align'>
 				<h1>QuizCreator</h1>
-        <div className='quiz-name-container'>
-        <h3>Quiz title:</h3>
-        <input type='form' className='quiz-name'/>
-        </div>
-        <table className='quiz-table'>
-        <thead>
-          <tr>
-            <th>Question</th>
-            <th>Anwsers</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.renderTable(this.state.QuestionAmount)}
-        </tbody>
-        </table>
-        <div className='quiz-right-fixed'>
-          <h5>Amount of Questions</h5>
-            <div className='anwser-amount'>
-              <button className='question-amount-button' onClick={_ => this.handleUpClick()}>+</button>
-              <div className='question-amount-container'>
-              <p className='question-amount'>{this.state.QuestionAmount.length-1}</p>
+        <div class='row valign-wrapper left-align'>
+          <div class='input-field col s12'>
+            <label for="QuizTitle">Quiz title</label>
+            <input type='text' class='col s8' id='QuizTitle'/>
+          </div>
+          <div class='row valign-wrapper left-align'>
+            <p class='col s12'>Amount of Questions:</p>
+            <div class='row left-align col s11'>
+              <a class='btn-floating waves-effect waves-light hoverable' onClick={_ => this.handleUpClick()}><i class="material-icons">add</i></a>
+              <div class='col s1 center-align'>
               </div>
-              <button className='question-amount-button' onClick={_ => this.handleDownClick()}>-</button>
+              <a class='btn-floating waves-effect waves-light hoverable' onClick={_ => this.handleDownClick()}><i class="material-icons">remove</i></a>
             </div>
-          <button>Submit Quiz</button>
+          </div>
         </div>
+        <ul class="collection col s12">
+          <div>
+            {this.renderTable(this.state.QuestionAmount)}
+          </div>
+        </ul>
+        <button class='btn waves-effect waves-light hoverable'>Submit Quiz</button>
 			</div>
 		)
 	}

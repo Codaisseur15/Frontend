@@ -18,7 +18,7 @@ class OneResultTeacher extends Component {
               <h2>Results for class</h2>
               <p>Quiz ID {quizResult.quizId}</p>
               <p>Class # {quizResult.courseId}</p>
-              <p>Avarage score {quizResult.average}/Max number of score</p>
+              <p>Avarage score {quizResult.average}%</p>
               <p># of students {quizResult.numberOfTakers}/Number of students in class</p>
               </div>
 
