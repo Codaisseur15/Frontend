@@ -6,7 +6,7 @@ const baseUrl = 'http://localhost:4000'
 
 export const showTeacherResult = (quizId, courseId) => (dispatch) => {
   request
-  .get(`${baseUrl}/responses/quiz=${quizId}/course=${courseId}`)
+  .get(`${baseUrl}/results/quiz=${quizId}/course=${courseId}`)
   .then(result => {
     dispatch({
         type: SHOW_TEACHER_RESULT,
@@ -18,7 +18,7 @@ export const showTeacherResult = (quizId, courseId) => (dispatch) => {
 
 export const showTeacherQuiz = (quizId) => (dispatch) => {
   request
-  .get(`${baseUrl}/responses/quiz/${quizId}`)
+  .get(`${baseUrl}/results/quiz/${quizId}`)
   .then(result => {
     dispatch({
         type: SHOW_TEACHER_QUIZ,
@@ -40,9 +40,9 @@ export const allTeacherResult = () => (dispatch) => {
     .catch(err => console.error(err))
 }
 
-export const getTeacherResponse = () => (dispatch) => {
+export const getTeacherResponse = (quizId) => (dispatch) => {
   request
-  .get(`${baseUrl}/responses/quiz/1`)
+  .get(`${baseUrl}/responses/quizzes/${quizId}`)
   .then(result => {
     dispatch({
       type: GET_TEACHER_RESPONSE,
