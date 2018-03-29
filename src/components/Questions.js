@@ -6,158 +6,12 @@ import './Questions.css'
 import {withRouter} from 'react-router'
 import {connect} from 'react-redux'
 
-const quizes = {
-    "id": 1,
-    "title": "HTML",
-    "question": [
-        {
-          "id": 1,
-          "text": "What is HTML?",
-          "type": "radio",
-            "answer": [
-                {
-                    "correct": true,
-                    "id": 1,
-                    "text": "html"
-                },
-                {
-                    "correct": false,
-                    "id": 2,
-                    "text": "HTML"
-                },
-                {
-                    "correct": false,
-                    "id": 3,
-                    "text": "HyperText"
-                },
-                {
-                    "correct": false,
-                    "id": 4,
-                    "text": "Cascading Style"
-                },
-                {
-                    "correct": true,
-                    "id": 17,
-                    "text": "html"
-                },
-                {
-                    "correct": false,
-                    "id": 18,
-                    "text": "HTML"
-                },
-                {
-                    "correct": false,
-                    "id": 19,
-                    "text": "HyperText"
-                },
-                {
-                    "correct": false,
-                    "id": 20,
-                    "text": "Cascading Style"
-                }
-            ]
-        },
-        {
-          "id": 2,
-          "text": "What is CSS?",
-          "type": "radio",
-            "answer": [
-                {
-                    "correct": true,
-                    "id": 5,
-                    "text": "Cascading Style Sheet"
-                },
-                {
-                    "correct": false,
-                    "id": 6,
-                    "text": "html"
-                },
-                {
-                    "correct": false,
-                    "id": 7,
-                    "text": "i dont know"
-                },
-                {
-                    "correct": false,
-                    "id": 8,
-                    "text": "booring"
-                },
-                {
-                    "correct": true,
-                    "id": 21,
-                    "text": "Cascading Style Sheet"
-                },
-                {
-                    "correct": false,
-                    "id": 22,
-                    "text": "html"
-                },
-                {
-                    "correct": false,
-                    "id": 23,
-                    "text": "i dont know"
-                },
-                {
-                    "correct": false,
-                    "id": 24,
-                    "text": "booring"
-                }
-            ]
-        },
-        {
-          "id": 3,
-          "text": "What is JavaScript?",
-          "type": "checkbox",
-            "answer": [
-                {
-                    "correct": true,
-                    "id": 9,
-                    "text": "JavaScript"
-                },
-                {
-                    "correct": true,
-                    "id": 10,
-                    "text": "java is an island"
-                },
-                {
-                    "correct": false,
-                    "id": 11,
-                    "text": "Java"
-                },
-                {
-                    "correct": false,
-                    "id": 12,
-                    "text": "Php"
-                },
-                {
-                    "correct": true,
-                    "id": 25,
-                    "text": "JavaScript"
-                },
-                {
-                    "correct": true,
-                    "id": 26,
-                    "text": "java is an island"
-                },
-                {
-                    "correct": false,
-                    "id": 27,
-                    "text": "Java"
-                },
-                {
-                    "correct": false,
-                    "id": 28,
-                    "text": "Php"
-                }
-            ]
-        }
-    ]
-}
 var quizResponse={}
 
 class Questions extends PureComponent {
   state = {courseId: this.props.match.params.courseId,
-          quizId: this.props.match.params.quizId}
+          quizId: this.props.match.params.quizId,
+          quizResponse: {}}
   static propTypes = {
       quiz: PropTypes.objectOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -183,15 +37,36 @@ class Questions extends PureComponent {
   	}
 
   	handleChange = (event) => {
-      const {name, value} = event.target
-      console.log(quizResponse);
-      quizResponse[name]=quizResponse[name].concat(value)
-      this.setState({
-      //  [name]: this.state[name].concat([value]),
-      //  courseId: this.props,
-      //  studentId: this.state.studentId,
-        quizResponse
+      const {name, value, type, checked} = event.target
+      const {quizResponse} = this.state
+      let answers
 
+      console.log(type)
+
+      if (type === 'radio'){
+        answers = [+value]
+      } else {
+        if (!quizResponse[name]) {
+          answers = [{ id: value, checked }]
+        } else {
+          quizResponse[name].map(a => {
+            if(a.id == +value) return { id: value, checked: false }
+            return a
+          })
+          answers = quizResponse[name]
+            .concat({ id: value, checked })
+        }
+      }
+
+      console.log(!quizResponse[name])
+      console.log(quizResponse[name])
+
+      this.setState({
+        [name]: checked,
+        quizResponse: {
+          ...quizResponse,
+          [name]: answers
+        }
       })
 
       console.log(this.state);
@@ -222,24 +97,19 @@ class Questions extends PureComponent {
     //console.log('==================');
     //console.log(this.props.match.params.quizId);
     //console.log('---------------');
+
     this.props.showQuiz(this.props.match.params.quizId)
   }
   render() {
   //  console.log('==================');
   //  console.log(this.props.quiz.question);
   //  console.log('---------------');
-  if (this.props.quiz.question) {
-    console.log(this.props.quiz);
-    this.props.quiz.question.map(q=>
-      {console.log(q.id);
-      quizResponse[q.id]=[]
-      return 0}
-    )
+
 
     //console.log(quizResponse, this.props.match.params.courseId);
 
     //const { onSubmit } = this.props
-
+  if (this.props.quiz.question) {
     return (
       <div>
       <ol>
@@ -250,14 +120,19 @@ class Questions extends PureComponent {
             {q.answer.map(a =>
               <div>
                 <label>
-                <input name={q.id} type={q.type} value={a.id} onChange={this.handleChange}/>
+                <input name={q.id} type={q.type} checked={this.state[a.id]} value={a.id} onChange={this.handleChange}/>
                 <span>{a.text}</span>
                 </label>
               </div>
             )}
           </li>)}
 
+
           <button type="submit">Submit</button>
+          <button onClick={e => {
+            e.preventDefault()
+            console.log(this.state)
+          }}>testbutton</button>
         </form>
       </ol>
       </div>
