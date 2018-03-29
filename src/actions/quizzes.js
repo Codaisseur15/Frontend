@@ -37,7 +37,7 @@ export const createQuiz = () => (dispatch, getState) => {
     .catch(err => console.error(err))
 }
 
-export const updateQuiz = (gameId, board) => (dispatch, getState) => {
+export const updateQuiz = (quizId, board) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
 
