@@ -3,8 +3,6 @@ import { allTeacherResult } from '../../actions/resultTeacher'
 import {connect} from 'react-redux'
 
 
-
-
 class ResultTeacher extends Component {
   componentWillMount() {
     this.props.allTeacherResult()
@@ -17,18 +15,22 @@ class ResultTeacher extends Component {
 
     return (
       <div>
-        <header className="App-header">
-          <h1 className="App-title">All quizzes</h1>
-            </header>
-              <div>
 
+        <h1>All quizzes</h1>
+
+            <div class='container center-align'>
               {allResult.map(x => {
                 return (
-                  <button
+                  <div>
+                  <h1>
+                    {x.title}
+                    </h1>
+                  <button class='btn waves-effect waves-light hoverable'
                   onClick={_=>window.location.href=`/teacher/${x.id}`}
                   >
-                {x.title}
+                  See results
                   </button>
+                  </div>
               )}
               )}
                 </div>

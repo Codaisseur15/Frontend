@@ -12,7 +12,7 @@ import QuizList from './components/QuizList'
 import StudentPage from './containers/StudentPage'
 import QuizCreator from './containers/QuizCreatorPage'
 import ResultTeacher from './components/teacher/ResultTeacher'
-import QuizResultTeacher from './components/teacher/QuizResultTeacher'
+import QuizTeacher from './components/teacher/QuizTeacher'
 import ResponseTeacher from './components/teacher/ResponseTeacher'
 
 
@@ -33,8 +33,8 @@ class App extends Component {
           <Route exact path="/responses" component={SubmitForm} />
           <Route exact path="/student/result" component={StudentPage} />
           <Route exact path="/teacher/main" component={ResultTeacher} />
-          <Route exact path="/teacher/:quizId" component={QuizResultTeacher} />
-          <Route exact path="/teacher/1/14" component={ResponseTeacher} />
+          <Route exact path="/teacher/:quizId" component={QuizTeacher} />
+          <Route exact path="/teacher/:quizId/:courseId" component={ResponseTeacher} />
           <Route exact path="/" render={ () => <Redirect to="/quizList" /> } />
         </div>
       </Router>
