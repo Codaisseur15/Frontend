@@ -1,21 +1,22 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import SubmitForm from './SubmitButton'
-import {submitForm} from '../actions/submitButton'
+import {submitForm,showQuiz} from '../actions/submitButton'
+import './Questions.css'
 import {withRouter} from 'react-router'
 import {connect} from 'react-redux'
-import './Questions.css'
 
 var quizResponse={}
 
-
 class Questions extends PureComponent {
-  state = {courseId: this.props.match.params.courseId}
-  static PropTypes = {
+  state = {courseId: this.props.match.params.courseId,
+          quizId: this.props.match.params.quizId,
+          quizResponse: {}}
+  static propTypes = {
       quiz: PropTypes.objectOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
-        questions: PropTypes.arrayOf(PropTypes.shape({
+        question: PropTypes.arrayOf(PropTypes.shape({
           id: PropTypes.number.isRequired,
           text: PropTypes.string.isRequired,
           type: PropTypes.string.isRequired,
@@ -30,175 +31,123 @@ class Questions extends PureComponent {
     }
 
     handleSubmit = (e) => {
-      const {quiz} = this.props
   		e.preventDefault()
-      this.setState({...this.state,quizId:quiz.id})
-  		this.props.submitForm({...this.state,quizId:quiz.id})
+  		this.props.submitForm(this.state)
       console.log(this.state);
   	}
 
   	handleChange = (event) => {
-      const {name, value} = event.target
-      console.log(quizResponse);
-      quizResponse[name]=quizResponse[name].concat(value)
-      this.setState({
-      //  [name]: this.state[name].concat([value]),
-      //  courseId: this.props,
-      //  studentId: this.state.studentId,
-        quizResponse
+      const {name, value, type, checked} = event.target
+      const {quizResponse} = this.state
+      let answers
 
+      console.log(type)
+
+      if (type === 'radio'){
+        answers = [+value]
+      } else {
+        if (!quizResponse[name]) {
+          answers = [{ id: value, checked }]
+        } else {
+          quizResponse[name].map(a => {
+            if(a.id == +value) return { id: value, checked: false }
+            return a
+          })
+          answers = quizResponse[name]
+            .concat({ id: value, checked })
+        }
+      }
+
+      console.log(!quizResponse[name])
+      console.log(quizResponse[name])
+
+      this.setState({
+        [name]: checked,
+        quizResponse: {
+          ...quizResponse,
+          [name]: answers
+        }
       })
 
       console.log(this.state);
     }
-    state = {
-      editmode: false,
-      radiobutton: 'checked',
-    }
 
-  componentWillMount(){
+    // state = {}
+    //
+    // handleChange = (event, answerId) => {
+    //   const {name} = event.target
+    //   if (this.state[name]) {
+    //     this.setState({
+    //       [name]: [...this.state[name], answerId]
+    //     })
+    //   } else {
+    //     this.setState({
+    //       [name]: [answerId]
+    //     })
+    //   }
+    // }
+
+    // handleSubmit = (e) => {
+  	// 	e.preventDefault()
+  	// 	console.log(this.state)
+  	// }
+
+
+  componentWillMount() {
+    //console.log('==================');
+    //console.log(this.props.match.params.quizId);
+    //console.log('---------------');
+
+    this.props.showQuiz(this.props.match.params.quizId)
   }
-
-  switchButton = () => {
-    const {radiobutton} = this.state
-    if (radiobutton === 'checked') {
-      this.setState({
-        radiobutton: ''
-      })
-    }
-    else {
-      this.setState({
-        radiobutton: 'checked'
-      })
-    }
-  }
-
-  setQuestionEditState = () => {
-    const {editmode} = this.state
-    console.log(editmode)
-    if(editmode === false) {
-      this.setState({
-        editmode: true
-      })
-    }
-    if(editmode === true) {
-      this.setState({
-        editmode: false
-      })
-    }
-    console.log('test')
-    this.forceUpdate()
-  }
-
-    state = {}
-
-    handleChange = (event, answerId) => {
-      const {name} = event.target
-      if (this.state[name]) {
-        this.setState({
-          [name]: [...this.state[name], answerId]
-        })
-      } else {
-        this.setState({
-          [name]: [answerId]
-        })
-      }
-    }
-
-    handleSubmit = (e) => {
-  		e.preventDefault()
-  		console.log(this.state)
-  	}
-
   render() {
-    const {onSubmit, quiz } = this.props
-    const {editmode} = this.state
-
-    quiz.questions.map(q=>
-      {console.log(q.id);
-      quizResponse[q.id]=[]
-      return 0}
-    )
-    console.log(quizResponse, this.props.match.params.courseId);
+  //  console.log('==================');
+  //  console.log(this.props.quiz.question);
+  //  console.log('---------------');
 
 
+    //console.log(quizResponse, this.props.match.params.courseId);
+
+    //const { onSubmit } = this.props
+  if (this.props.quiz.question) {
     return (
       <div>
-        <div class="row">
-        </div>
-      <div class="row">
-      {!editmode &&
-          <form onSubmit={this.handleSubmit}>
-            {quiz.questions.map((q, key) =>
-            <ul class='collection with-header col s8 offset-s2'>
-              <li class='collection-header left-align'>
-                <div class='row'>
-                  <h3>
-                    {q.id}.
-                  </h3>
-                  <h3>
-                    {q.text}
-                  </h3>
-                </div>
-              </li>
-              {q.answer.map((a, key)=>
-                <li class='collection-item'>
-                  <div key={key} class="row">
-                    <label>
-                      <input name={q.id} type={q.type} value={a.id} onChange={this.handleChange}/>
-                      <span>{a.text}</span>
-                    </label>
-                  </div>
-                </li>
-              )}
-            </ul>)}
-          </form>
-        }
-        {editmode &&
-          <form onSubmit={this.handleSubmit}>
-            {quiz.questions.map((q, key) =>
-            <ul class='collection with-header col s8 offset-s2'>
-              <li class='collection-item'>
-              <label>
-              <div class='container col s1'>
-              <div class='switch'>
-                <label class='row left-align'>
-                  <span class="lever">{q.type}</span>
-                  <input type="checkbox" onClick={_ => this.stateCheck(q)}/>
+      <ol>
+        <form onSubmit={this.handleSubmit}>
+        {this.props.quiz.question.map(q =>
+          <li>
+          <h3>{q.text}</h3>
+            {q.answer.map(a =>
+              <div>
+                <label>
+                <input name={q.id} type={q.type} checked={this.state[a.id]} value={a.id} onChange={this.handleChange}/>
+                <span>{a.text}</span>
                 </label>
               </div>
-              </div>
-              </label>
-              </li>
-              <li class='collection-header left-align'>
-                <div class='row'>
-                  <h3 class=''>
-                    {q.id}.
-                  </h3>
-                  <h3 class='col s8 left-align pull-s2'>
-                  <input placeholder={q.text} id="questionTitle" type="text" class="validate"/>
-                  </h3>
-                </div>
-                </li>
-                {q.answer.map((a, key)=>
-                  <li class='collection-item'>
-                    <div key={key} class="row">
-                    <label>
-                      <input name={q.id} type={q.type}/>
-                      <span><input placeholder={a.text} id="questionTitle" type="text" class="validate"/></span>
-                    </label>
-                    </div>
-                  </li>
-                )}
-              </ul>
-              )}
-          </form>}
-        </div>
+            )}
+          </li>)}
+
+
+          <button type="submit">Submit</button>
+          <button onClick={e => {
+            e.preventDefault()
+            console.log(this.state)
+          }}>testbutton</button>
+        </form>
+      </ol>
       </div>
     )
+  }
+  return null
+  }
+}
+
+const mapStateToProps = ({showQuiz}) => {
+  return {
+    quiz: showQuiz
   }
 }
 //export default Questions
 export default withRouter(
-  connect(null,{submitForm})(Questions)
+  connect(mapStateToProps,{submitForm, showQuiz})(Questions)
 )
