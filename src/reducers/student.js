@@ -2,17 +2,13 @@
 
 import {SHOW_STUDENT_RESULT} from '../actions/types'
 
-const initialState = {
-  score: 70
-}
-
-
+const initialState = []
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case SHOW_STUDENT_RESULT:
       return {
-        state
+        payload
       }
 
     default:

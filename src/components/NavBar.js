@@ -11,13 +11,12 @@ class NavBar extends PureComponent {
     return (
       <nav>
         <div class="nav-wrapper red">
-          <a href="#" class="brand-logo"><i class="material-icons">create</i>Codaisseur | Teachers</a>
+          <a href="./" class="brand-logo"><i class="material-icons"></i>Codaisseur</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             { this.props.currentUser && <li>Welcome {this.props.currentUser}</li>}
             { !this.props.currentUser && <li><a href="/login">Login</a></li>}
             { this.props.currentUser && <li><a href="/logout">Logout</a></li>}
-            <li><a href="/Quizcreator">Create Quiz</a></li>
-            <li><a href="/student_quiz_result">Students Results</a></li>
+            <li><a href="/Quizcreator"><i class="material-icons">create</i>Create Quiz</a></li>
           </ul>
         </div>
       </nav>
