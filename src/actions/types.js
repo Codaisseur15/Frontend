@@ -15,6 +15,7 @@ export const GET_TEACHER_RESPONSE = 'GET_TEACHER_RESPONSE'
 
 
 export const EDIT_QUIZ = 'EDIT_QUIZ'
+export const SHOW_QUIZ = 'SHOW_QUIZ'
 
 export const SUBMIT = 'SUBMIT'
 
