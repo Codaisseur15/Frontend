@@ -7,26 +7,25 @@ import {withRouter} from 'react-router'
 
 
 
-class ResponseTeacher extends Component {
-
+class QuizTeacher extends Component {
 
   componentWillMount() {
       this.props.showTeacherQuiz(this.props.match.params.quizId)
   }
-  render() {
 
+  render() {
     const {teacherQuiz} = this.props
-        if (!teacherQuiz[0]) return null
+        if (!teacherQuiz) return null
 
     return (
       <div>
-
+      <h1>Quiz #{this.props.match.params.quizId}</h1>
       {teacherQuiz.map(x => {
         return (
           <div>
           <OneResultTeacher
             quizResult={x}/>
-            <button
+            <button class='btn waves-effect waves-light hoverable'
             onClick={
               _=>window.location
               .href=`/teacher/${x.quizId}/${x.courseId}`
@@ -50,5 +49,6 @@ const mapStateToProps = state => ({
 export default withRouter(
   connect(mapStateToProps, {
     showTeacherQuiz
-})(ResponseTeacher)
+})
+(QuizTeacher)
 )

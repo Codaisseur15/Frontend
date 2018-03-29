@@ -8,25 +8,17 @@ class OneResultTeacher extends Component {
   render() {
     const { quizResult } = this.props
 
-
     return (
-      <div>
-        <header className="App-header">
-            </header>
+
               <div>
-              <div>
-              <h2>Results for class</h2>
-              <p>Quiz ID {quizResult.quizId}</p>
-              <p>Class # {quizResult.courseId}</p>
-              <p>Avarage score {quizResult.average}%</p>
-              <p># of students {quizResult.numberOfTakers}/Number of students in class</p>
+              <h2>Results for class {quizResult.courseId}</h2>
+              <h4>Avarage score {quizResult.average}%</h4>
+              <h4># of submitted answers {quizResult.numberOfTakers}</h4>
               </div>
 
-                </div>
-                </div>
-              );
-            }
+            );
           }
+        }
 
 
 export default OneResultTeacher
