@@ -17,7 +17,6 @@ class NavBar extends PureComponent {
             <li><a href="/login">Login</a></li>
             <li><a href="/logout">Logout</a></li>
             <li><a href="/Quizcreator">Create Quiz</a></li>
-            <li><a href="/student_quiz_result">Students Results</a></li>
           </ul>
         </div>
       </nav>

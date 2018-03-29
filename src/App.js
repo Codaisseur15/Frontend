@@ -8,11 +8,11 @@ import LoginPage from './containers/LoginPage'
 import LogoutPage from './containers/LogoutPage'
 import Quiz from './containers/Quiz'
 import SubmitForm  from './components/SubmitButton'
-import ResultStudent from './components/ResultStudent'
 import QuizList from './components/QuizList'
-import Student from './containers/StudentPage'
+import StudentPage from './containers/StudentPage'
 import QuizCreator from './containers/QuizCreatorPage'
 import ResultTeacher from './components/teacher/ResultTeacher'
+import QuizResultTeacher from './components/teacher/QuizResultTeacher'
 import ResponseTeacher from './components/teacher/ResponseTeacher'
 
 
@@ -31,9 +31,10 @@ class App extends Component {
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
           <Route exact path="/quiz/course=:courseId" component={Quiz} />
           <Route exact path="/responses" component={SubmitForm} />
-          <Route exact path="/student_quiz_result" component={ResultStudent} />
-          <Route exact path="/teacher/result" component={ResultTeacher} />
-          <Route exact path="/teacher/response" component={ResponseTeacher} />
+          <Route exact path="/student/result" component={StudentPage} />
+          <Route exact path="/teacher/main" component={ResultTeacher} />
+          <Route exact path="/teacher/quiz/1" component={QuizResultTeacher} />
+          <Route exact path="/teacher/quiz/1/course14" component={ResponseTeacher} />
           <Route exact path="/" render={ () => <Redirect to="/quizList" /> } />
         </div>
       </Router>

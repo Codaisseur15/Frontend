@@ -197,6 +197,26 @@ class Questions extends PureComponent {
       console.log(this.state);
     }
 
+    state = {}
+
+    handleChange = (event, answerId) => {
+      const {name} = event.target
+      if (this.state[name]) {
+        this.setState({
+          [name]: [...this.state[name], answerId]
+        })
+      } else {
+        this.setState({
+          [name]: [answerId]
+        })
+      }
+    }
+
+    handleSubmit = (e) => {
+  		e.preventDefault()
+  		console.log(this.state)
+  	}
+
   render() {
     quizes.question.map(q=>
       {console.log(q.id);
