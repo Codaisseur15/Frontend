@@ -111,12 +111,15 @@ class Questions extends PureComponent {
     //const { onSubmit } = this.props
   if (this.props.quiz.question) {
     return (
-      <div>
-      <ol>
+      <div class='row'>
+      <ul class='collection with-header col s8 offset-s2'>
         <form onSubmit={this.handleSubmit}>
         {this.props.quiz.question.map(q =>
-          <li>
-          <h3>{q.text}</h3>
+          <li class='collection-header left-align'>
+          <h3>{q.id}
+          </h3>
+          <h3>
+          {q.text}</h3>
             {q.answer.map(a =>
               <div>
                 <label>
@@ -126,15 +129,13 @@ class Questions extends PureComponent {
               </div>
             )}
           </li>)}
-
-
           <button type="submit">Submit</button>
           <button onClick={e => {
             e.preventDefault()
             console.log(this.state)
           }}>testbutton</button>
         </form>
-      </ol>
+      </ul>
       </div>
     )
   }
