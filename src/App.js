@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import NavBar from './components/NavBar'
 
-
+import QuestionCreator from './components/QuestionCreator'
 //Pages
 import LoginPage from './containers/LoginPage'
 import LogoutPage from './containers/LogoutPage'
@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <Router>
         <div className='App'>
-          <NavBar />
+          <NavBar/>
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/logout" component={LogoutPage} />
           <Route exact path="/quizlist" component={QuizList} />

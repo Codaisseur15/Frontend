@@ -1,4 +1,9 @@
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
+.App{
+  overflow-x: hidden;
+  font: Ubuntu;
+}
 
 .question-list{
   text-align: left;

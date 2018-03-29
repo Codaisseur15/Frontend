@@ -41,22 +41,26 @@ class QuestionCreator extends PureComponent {
     if(QuestionType === 'multiple choice') {
       return(x.map((Anwser, key) => {
         if(Anwser !== 0){return(
-            <tr key={key}>
-                <th><input type='checkbox'/>
-                <input type='form' className='question-form'/></th>
-                <th><input type='checkbox'/></th>
-            </tr>
+            <li key={key} class='collection-item row'>
+              <input type='text' placeholder='Anwser' class='col s7 offset-s1'/>
+              <label>
+                <input type="checkbox" name={`correct${QuestionId}`}/>
+                <span>correct</span>
+              </label>
+            </li>
         )}
       }))
     }
     if(QuestionType === 'single choice') {
       return(x.map((Anwser, key) => {
         if(Anwser !== 0){return(
-            <tr key={key}>
-              <th><input type="radio" name={QuestionId}/>
-              <input type='form' className='question-form'/></th>
-              <th><input type="radio" name={`correct${QuestionId}`}/></th>
-            </tr>
+            <li key={key} class='collection-item row'>
+              <input type='text' placeholder='Anwser' class='col s7 offset-s1'/>
+              <label>
+                <input type="radio" name={`correct${QuestionId}`}/>
+                <span>correct</span>
+              </label>
+            </li>
         )}
       }))
     }
@@ -64,24 +68,18 @@ class QuestionCreator extends PureComponent {
 
 	render() {
 		return (
-			<div className='quiz-container'>
-        <table className='question-table'>
-          <thead>
-            <tr>
-              <th>Anwser</th>
-              <th>Correct?</th>
-            </tr>
-          </thead>
-          <tbody>
-          {this.renderTable(this.state.AnwserAmount)}
-          </tbody>
-        </table>
-          <div className='anwser-amount'>
-            <h5>Amount of Anwsers</h5>
-            <button className='anwser-amount-button' onClick={_ => this.handleUpClick()}>+</button>
-            <p>{this.state.AnwserAmount.length-1}</p>
-            <button className='anwser-amount-button' onClick={_ => this.handleDownClick()}>-</button>
+			<div class='container col s12 offset-s1'>
+        <div class='row'>
+          <ul class='collection'>
+            {this.renderTable(this.state.AnwserAmount)}
+          </ul>
+          <div class='container col s1'>
+            <a class='btn-floating waves-effect waves-light hoverable' onClick={_ => this.handleUpClick()}><i class="material-icons">add</i></a>
+            <div class='col s1 center-align'>
+            </div>
+            <a class='btn-floating waves-effect waves-light hoverable' onClick={_ => this.handleDownClick()}><i class="material-icons">remove</i></a>
           </div>
+        </div>
       </div>
 		)
 	}
