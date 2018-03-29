@@ -3,13 +3,15 @@ import { getTeacherResponse, showTeacherResult,
   showTeacherQuiz } from '../../actions/resultTeacher'
 import {connect} from 'react-redux'
 import OneResultTeacher from './OneResultTeacher'
+import {withRouter} from 'react-router'
 
 
 
 class ResponseTeacher extends Component {
 
+
   componentWillMount() {
-    this.props.showTeacherQuiz()
+      this.props.showTeacherQuiz(this.props.match.params.quizId)
   }
   render() {
 
@@ -21,13 +23,20 @@ class ResponseTeacher extends Component {
 
       {teacherQuiz.map(x => {
         return (
+          <div>
           <OneResultTeacher
             quizResult={x}/>
-        )
+            <button
+            onClick={
+              _=>window.location
+              .href=`/teacher/${x.quizId}/${x.courseId}`
+            }>
+            View answers
+            </button>
+          </div>)
       }
       )}
 
-                <p/>
         </div>
               );
             }
@@ -38,6 +47,8 @@ const mapStateToProps = state => ({
   teacherQuiz: state.teacherQuiz
 })
 
-export default connect(mapStateToProps, {
+export default withRouter(
+  connect(mapStateToProps, {
     showTeacherQuiz
 })(ResponseTeacher)
+)
