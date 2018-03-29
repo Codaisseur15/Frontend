@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import './Questions.css'
 
-const quizes = {
+const quiz = {
     "id": 1,
     "title": "HTML",
     "questions": [
@@ -153,7 +153,7 @@ const quizes = {
 
 class Questions extends PureComponent {
   static PropTypes = {
-      quizes: PropTypes.objectOf(PropTypes.shape({
+      quiz: PropTypes.objectOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         questions: PropTypes.arrayOf(PropTypes.shape({
@@ -177,7 +177,7 @@ class Questions extends PureComponent {
       <div>
       <ol>
         <form onSubmit={ (e)=> {onSubmit}}>
-        {quizes.questions.map(q =>
+        {quiz.questions.map(q =>
           <li>
           <h3>{q.text}</h3>
             {q.answer.map(a =>
