@@ -1,32 +1,36 @@
 import React, { Component } from 'react';
-import { showTeacherResult } from '../../actions/resultTeacher'
+import { allTeacherResult } from '../../actions/resultTeacher'
 import {connect} from 'react-redux'
-import OneResultTeacher from './OneResultTeacher'
+
 
 
 
 class ResultTeacher extends Component {
-
-  renderResults = (quiz) => {
-    return (
-      <div>
-      <OneResultTeacher
-      result_id={quiz.result_id}
-      />
-      </div>
-    )
+  componentWillMount() {
+    this.props.allTeacherResult()
   }
 
   render() {
-    const {quizResult} = this.props
+    const {allResult} = this.props
+
+    if (!allResult[0]) return null
 
     return (
       <div>
         <header className="App-header">
-          <h1 className="App-title">Quiz results</h1>
+          <h1 className="App-title">All quizzes</h1>
             </header>
               <div>
-                {quizResult.map(quiz => this.renderResults(quiz))}
+
+              {allResult.map(x => {
+                return (
+                  <button
+                  onClick={_=>window.location.href=`/teacher/${x.id}`}
+                  >
+                {x.title}
+                  </button>
+              )}
+              )}
                 </div>
                 </div>
               );
@@ -34,7 +38,7 @@ class ResultTeacher extends Component {
           }
 
 const mapStateToProps = state => ({
-  quizResult: state.quizResult
+  allResult: state.allTeacherResult
 })
 
-export default connect(mapStateToProps, { showTeacherResult })(ResultTeacher)
+export default connect(mapStateToProps, { allTeacherResult })(ResultTeacher)

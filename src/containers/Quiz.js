@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import QuestionTitle from '../components/QuestionTitle'
 import Questions from '../components/Questions'
 
-const quizes = {
+const quiz = {
     "id": 1,
     "title": "HTML",
     "questions": [
@@ -160,7 +160,7 @@ class Quiz extends PureComponent {
     return (
       <div class='container center-align'>
         <QuestionTitle content="Quiz Title Here"/>
-        <Questions quizes={quizes}/>
+        <Questions quiz={quiz}/>
         <button class="btn waves-effect waves-ligt hoverable">Submit</button>
       </div>
     )

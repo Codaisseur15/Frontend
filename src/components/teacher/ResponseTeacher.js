@@ -1,48 +1,79 @@
 import React, { Component } from 'react';
-import { getTeacherResponse } from '../../actions/resultTeacher'
+import { getTeacherResponse, showTeacherResult } from '../../actions/resultTeacher'
 import {connect} from 'react-redux'
+import { showStudentQuiz } from '../../actions/result'
+import OneResultTeacher from './OneResultTeacher'
 
 
 
 class ResponseTeacher extends Component {
 
-renderQuizresponses = (questionId, variantId) => {
-const {quizResponse} = this.props
-return quizResponse.filter(x => x.quizResponse[questionId].includes(variantId)).length
+  componentWillMount() {
+    this.props.showStudentQuiz(),
+    this.props.showTeacherResult(),
+    this.props.getTeacherResponse()
+  }
+
+
+renderQuizresponses(questionId, variantId) {
+  const {response} = this.props
+
+  return response.filter(x => {
+    const { quizResponse } = x
+
+    return quizResponse[questionId]
+    .includes(variantId)
+  }).length
+}
+
+renderQuizQuestion = () => {
+
+const {studentQuiz} = this.props
+  if (!studentQuiz.question) return null
+
+return studentQuiz.question.map(q => {
+  return (
+    <li>
+    <h3>{q.text}</h3>{
+      q.answer.map(a =>
+        <div>
+          <p>{a.text}</p>
+          <p>{this.renderQuizresponses(q.id, a.id)} answers</p>
+        </div>
+      )}
+    </li>
+  )
+})
 }
 
   render() {
 
     const {quizResult} = this.props
+    const {studentQuiz} = this.props
+    const {response} = this.props
+    if (!response[0]) return null
+
 
     return (
       <div>
-        <header className="App-header">
-          <h1 className="App-title">Quiz results</h1>
-            </header>
-              <div>
+              <OneResultTeacher quizResult={quizResult}/>
 
-                <div>
-                <h2>Results</h2>
-                <p>Quiz ID {quizResult.id}</p>
-                <p>Class # {quizResult.course_id}</p>
-                <p>Answers: {quizResult.number_of_students}/</p>
-                <p>Score: {quizResult.av_score}</p>
-                </div>
-                Question 1:
-                Variant 1
-                {this.renderQuizresponses(1,2)}
+                <h1>Quiz questions</h1>
+                {this.renderQuizQuestion()}
                 <p/>
-
-                </div>
                 </div>
               );
             }
           }
 
 const mapStateToProps = state => ({
-  quizResponse: state.quizResponse,
-  quizResult: state.quizResult
+  response: state.quizResponse,
+  quizResult: state.quizResult,
+  studentQuiz: state.studentQuiz
 })
 
-export default connect(mapStateToProps, { getTeacherResponse })(ResponseTeacher)
+export default connect(mapStateToProps, {
+  getTeacherResponse,
+    showStudentQuiz,
+    showTeacherResult
+})(ResponseTeacher)

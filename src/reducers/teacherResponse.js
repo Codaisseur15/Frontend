@@ -3,12 +3,11 @@ import { teacherResponses } from '../lib/teacherResultList'
 
 
 
-export default (state = teacherResponses, { type, payload }) => {
+export default (state = {}, { type, payload }) => {
   switch (type) {
       case GET_TEACHER_RESPONSE:
-        return {
-          state
-        }
+        return payload
+
     default:
       return state
   }

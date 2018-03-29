@@ -4,12 +4,11 @@ import { oneResult } from '../lib/teacherResultList'
 
 
 
-export default (state = oneResult, { type, payload }) => {
+export default (state = {}, { type, payload }) => {
   switch (type) {
-    case GET_ONE_TEACHER_RESULT:
-      return {
-        state
-      }
+    case SHOW_TEACHER_RESULT:
+      return payload
+
     default:
       return state
   }

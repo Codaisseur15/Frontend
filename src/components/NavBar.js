@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import "./NavBar.css";
 import { connect } from "react-redux";
 // import { Link } from "react-router-dom";
 import { logout } from "../actions/users";
@@ -11,13 +10,10 @@ class NavBar extends PureComponent {
   render() {
     return (
       <nav>
-        <div class="nav-wrapper red darken-2">
-          <a href="#" class="brand-logo"><i class="material-icons">create</i>Codaisseur | Teachers</a>
+        <div class="nav-wrapper red">
+          <a href="./" class="brand-logo"><i class="material-icons"></i>Codaisseur</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/login">Login</a></li>
-            <li><a href="/logout">Logout</a></li>
-            <li><a href="/Quizcreator">Create Quiz</a></li>
-            <li><a href="/student_quiz_result">Students Results</a></li>
+            <li><a href="/Quizcreator"><i class="material-icons">create</i>Create Quiz</a></li>
           </ul>
         </div>
       </nav>

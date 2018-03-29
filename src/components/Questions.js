@@ -1,11 +1,18 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import SubmitForm from './SubmitButton'
+import {submitForm} from '../actions/submitButton'
+import {withRouter} from 'react-router'
+import {connect} from 'react-redux'
 import './Questions.css'
+
+var quizResponse={}
 
 
 class Questions extends PureComponent {
+  state = {courseId: this.props.match.params.courseId}
   static PropTypes = {
-      quizes: PropTypes.objectOf(PropTypes.shape({
+      quiz: PropTypes.objectOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         questions: PropTypes.arrayOf(PropTypes.shape({
@@ -18,7 +25,31 @@ class Questions extends PureComponent {
             correct: PropTypes.bool.isRequired
           })).isRequired
         })).isRequired
-      })).isRequired
+      })).isRequired,
+      //studentId: PropTypes.number
+    }
+
+    handleSubmit = (e) => {
+      const {quiz} = this.props
+  		e.preventDefault()
+      this.setState({...this.state,quizId:quiz.id})
+  		this.props.submitForm({...this.state,quizId:quiz.id})
+      console.log(this.state);
+  	}
+
+  	handleChange = (event) => {
+      const {name, value} = event.target
+      console.log(quizResponse);
+      quizResponse[name]=quizResponse[name].concat(value)
+      this.setState({
+      //  [name]: this.state[name].concat([value]),
+      //  courseId: this.props,
+      //  studentId: this.state.studentId,
+        quizResponse
+
+      })
+
+      console.log(this.state);
     }
     state = {
       editmode: false,
@@ -59,24 +90,46 @@ class Questions extends PureComponent {
     this.forceUpdate()
   }
 
-  render() {
+    state = {}
 
-    const {onSubmit, quizes } = this.props
+    handleChange = (event, answerId) => {
+      const {name} = event.target
+      if (this.state[name]) {
+        this.setState({
+          [name]: [...this.state[name], answerId]
+        })
+      } else {
+        this.setState({
+          [name]: [answerId]
+        })
+      }
+    }
+
+    handleSubmit = (e) => {
+  		e.preventDefault()
+  		console.log(this.state)
+  	}
+
+  render() {
+    const {onSubmit, quiz } = this.props
     const {editmode} = this.state
+
+    quiz.questions.map(q=>
+      {console.log(q.id);
+      quizResponse[q.id]=[]
+      return 0}
+    )
+    console.log(quizResponse, this.props.match.params.courseId);
+
 
     return (
       <div>
         <div class="row">
-          {<a class="waves-effect waves-light btn col s2 hoverable"
-            onClick={_ => this.setQuestionEditState()}>
-            <i class="material-icons left">edit</i>
-            edit
-          </a>}
         </div>
       <div class="row">
       {!editmode &&
-          <form onSubmit={ (e)=> {onSubmit}}>
-            {quizes.questions.map((q, key) =>
+          <form onSubmit={this.handleSubmit}>
+            {quiz.questions.map((q, key) =>
             <ul class='collection with-header col s8 offset-s2'>
               <li class='collection-header left-align'>
                 <div class='row'>
@@ -92,7 +145,7 @@ class Questions extends PureComponent {
                 <li class='collection-item'>
                   <div key={key} class="row">
                     <label>
-                      <input name={q.id} type={q.type}/>
+                      <input name={q.id} type={q.type} value={a.id} onChange={this.handleChange}/>
                       <span>{a.text}</span>
                     </label>
                   </div>
@@ -102,8 +155,8 @@ class Questions extends PureComponent {
           </form>
         }
         {editmode &&
-          <form onSubmit={ (e)=> {onSubmit}}>
-            {quizes.questions.map((q, key) =>
+          <form onSubmit={this.handleSubmit}>
+            {quiz.questions.map((q, key) =>
             <ul class='collection with-header col s8 offset-s2'>
               <li class='collection-item'>
               <label>
@@ -145,5 +198,7 @@ class Questions extends PureComponent {
     )
   }
 }
-
-export default Questions
+//export default Questions
+export default withRouter(
+  connect(null,{submitForm})(Questions)
+)
