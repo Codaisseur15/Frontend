@@ -9,10 +9,8 @@ export default (state = null, {type, payload}) => {
       }
 
     case SHOW_QUIZZES:
-      return {
-        ...state,
-        [payload.id]: payload
-      }
+      return payload
+
 
     case UPDATE_QUIZ_SUCCESS:
       return payload.reduce((quizzes, quiz) => {

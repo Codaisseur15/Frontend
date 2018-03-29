@@ -11,7 +11,6 @@ export const getQuizzes = () => (dispatch, getState) => {
 
   request
     .get(`${baseUrl}/quizzes`)
-    .set('Authorization', `Bearer ${jwt}`)
     .then(result => {
       dispatch({
         type: SHOW_QUIZZES,

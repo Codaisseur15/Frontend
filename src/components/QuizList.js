@@ -1,8 +1,12 @@
 import React, { PureComponent } from 'react'
 import './QuizList.css'
+import {connect} from 'react-redux'
+import {getQuizzes} from '../actions/quizzes'
 
 export default class QuizList extends PureComponent {
-
+componentWillMount() {
+  this.props.getQuizzes()
+}
   render() {
 
     let QuizList = [
@@ -59,4 +63,11 @@ export default class QuizList extends PureComponent {
   }
 }
 
-// <td><button onClick={_=>window.location.href=`/edit/${quiz.id}`} className='edit-button'>edit the quiz</button></td>
+const mapStateToProps = function (state) {
+	return {
+		quizzes: state.quizzes,
+    //error: state.login.error
+	}
+}
+
+export default connect(mapStateToProps, {getQuizzes})(QuizList)
