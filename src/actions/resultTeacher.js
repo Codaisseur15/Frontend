@@ -42,8 +42,14 @@ export const allTeacherResult = () => (dispatch) => {
     .catch(err => console.error(err))
 }
 
-export const getTeacherResponse = () => {
-  return {
-    type: GET_TEACHER_RESPONSE
-  }
+export const getTeacherResponse = () => (dispatch) => {
+  request
+  .get(`${apiUrl}/responses/quiz/1`)
+  .then(result => {
+    dispatch({
+      type: GET_TEACHER_RESPONSE,
+      payload: result.body
+  })
+})
+.catch(err => console.error(err))
 }
