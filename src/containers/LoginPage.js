@@ -16,6 +16,7 @@ class LoginPage extends PureComponent {
 			<Redirect to="/" />
 		)
 
+
 		return (
 			<div className="login-page">
 				<h1>Login</h1>
@@ -29,8 +30,8 @@ class LoginPage extends PureComponent {
 const mapStateToProps = function (state) {
 	return {
 		currentUser: state.currentUser,
-    error: state.login.error
+    //error: state.login.error
 	}
 }
 
-export default connect(mapStateToProps, {login} )(LoginPage)
+export default connect(mapStateToProps)(LoginPage)
