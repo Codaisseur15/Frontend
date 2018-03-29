@@ -1,40 +1,20 @@
 import React, { PureComponent } from 'react'
 import './QuizList.css'
+import {connect} from 'react-redux'
+import {getQuizzes} from '../actions/quizzes'
 
-export default class QuizList extends PureComponent {
-
+class QuizList extends PureComponent {
+componentWillMount() {
+  this.props.getQuizzes()
+}
   render() {
+    const {quizzes} = this.props;
+    if (!quizzes) return null
 
-    let QuizList = [
-      {
-        id:1,
-        title:'Ruby on Rails',
-        score:'55/100',
-      },
-      {
-        id:2,
-        title:'JavaScript',
-        score:'60/100',
-      },
-      {
-        id:3,
-        title: 'React-Redux',
-        score: '45/100',
-      },
-      {
-        id:4,
-        title: 'TypeScript',
-        score: '70/100',
-      },
-      {
-        id:5,
-        title: 'WebSockets',
-        score: '35/100',
-      },
-    ]
 
     return (
       <div className = 'quiz-list'>
+      {console.log(this.props)}
         <h2>Current Quizzes</h2>
         <table>
           <tr>
@@ -43,11 +23,12 @@ export default class QuizList extends PureComponent {
             <th>Score</th>
             <th>Edit</th>
           </tr>
-          {QuizList.map(quiz =>
+
+          {quizzes.map(quiz =>
             <tr>
               <td width="5%">{quiz.id}</td>
               <td width="70%" className="title">{quiz.title}</td>
-              <td width="10%">{quiz.score}</td>
+              <td width="10%"></td>
               <td width="15%" onClick={_=>window.location.href=`/edit/${quiz.id}`} className='edit-button'>edit this quiz</td>
 
             </tr>
@@ -59,4 +40,11 @@ export default class QuizList extends PureComponent {
   }
 }
 
-// <td><button onClick={_=>window.location.href=`/edit/${quiz.id}`} className='edit-button'>edit the quiz</button></td>
+const mapStateToProps = function (state) {
+	return {
+		quizzes: state.quizzes,
+    //error: state.login.error
+	}
+}
+
+export default connect(mapStateToProps, {getQuizzes})(QuizList)
