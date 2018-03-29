@@ -5,8 +5,7 @@ import { SHOW_STUDENT_RESULT } from './types'
 import { SHOW_STUDENT_QUIZ } from './types'
 
 
-const baseUrl_quiz = 'http://localhost:4008'
-const baseUrl_response = 'http://localhost:4001'
+const baseUrl = 'http://localhost:4000'
 
 
 export const showStudentResult = () => {
@@ -18,7 +17,7 @@ export const showStudentResult = () => {
 
 export const showStudentQuiz = (id) => (dispatch) => {
   request
-    .get(`${baseUrl_quiz}/quizzes/${id}`)
+    .get(`${baseUrl}/quizzes/${id}`)
     .then(result => {
       dispatch({
         type: SHOW_STUDENT_QUIZ,
