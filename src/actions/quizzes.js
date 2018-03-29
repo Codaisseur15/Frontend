@@ -2,7 +2,7 @@ import * as request from 'superagent'
 import {baseUrl} from '../constants'
 
 export const ADD_QUIZ = 'ADD_GAME'
-export const UPDATE_QUIZZES = 'UPDATE_GAMES'
+export const SHOW_QUIZZES = 'SHOW_QUIZZES'
 export const UPDATE_QUIZ_SUCCESS = 'UPDATE_GAME_SUCCESS'
 
 export const getQuizzes = () => (dispatch, getState) => {
@@ -14,7 +14,7 @@ export const getQuizzes = () => (dispatch, getState) => {
     .set('Authorization', `Bearer ${jwt}`)
     .then(result => {
       dispatch({
-        type: UPDATE_QUIZZES,
+        type: SHOW_QUIZZES,
         payload: result.body
       })
     })

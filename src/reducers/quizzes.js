@@ -1,4 +1,4 @@
-import {ADD_QUIZ, UPDATE_QUIZZES, UPDATE_QUIZ_SUCCESS} from '../actions/quizzes'
+import {ADD_QUIZ, SHOW_QUIZZES, UPDATE_QUIZ_SUCCESS} from '../actions/quizzes'
 
 export default (state = null, {type, payload}) => {
   switch (type) {
@@ -8,7 +8,7 @@ export default (state = null, {type, payload}) => {
         [payload.id]: payload
       }
 
-    case UPDATE_QUIZZES:
+    case SHOW_QUIZZES:
       return {
         ...state,
         [payload.id]: payload
