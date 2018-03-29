@@ -3,15 +3,14 @@ import * as request from 'superagent'
 import { SUBMIT, SUBMIT_FAILED, SHOW_QUIZ } from './types'
 
 
-const baseUrl_response = 'http://localhost:4001'
-const baseUrl_quiz = 'http://localhost:4008'
+const baseUrl = 'http://localhost:4000'
 
 //export const submitForm = (courseId, studentId, quizId, quizResponse) => (dispatch) => {
 export const submitForm = (response) => (dispatch) => {
   console.log('====================',response);
   console.log('==========================');
   request
-      .post(`${baseUrl_response}/responses`)
+      .post(`${baseUrl}/responses`)
       .send(response)
 
       .then(result => {
@@ -25,7 +24,7 @@ export const submitForm = (response) => (dispatch) => {
 
 export const showQuiz = (id) => (dispatch) => {
   request
-      .get(`${baseUrl_quiz}/quizzes/${id}`)
+      .get(`${baseUrl}/quizzes/${id}`)
       .then(result => {
         console.log(result.body);
         dispatch({
