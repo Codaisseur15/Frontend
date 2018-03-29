@@ -18,9 +18,9 @@ export const showTeacherResult = () => (dispatch) => {
 .catch(err => console.error(err))
 }
 
-export const showTeacherQuiz = () => (dispatch) => {
+export const showTeacherQuiz = (id) => (dispatch) => {
   request
-  .get(`${apiUrl}/results/quiz/1`)
+  .get(`${apiUrl}/results/quiz/${id}`)
   .then(result => {
     dispatch({
         type: SHOW_TEACHER_QUIZ,
@@ -42,9 +42,9 @@ export const allTeacherResult = () => (dispatch) => {
     .catch(err => console.error(err))
 }
 
-export const getTeacherResponse = () => (dispatch) => {
+export const getTeacherResponse = (id) => (dispatch) => {
   request
-  .get(`${apiUrl}/responses/quiz/1`)
+  .get(`${apiUrl}/responses/quiz/${id}`)
   .then(result => {
     dispatch({
       type: GET_TEACHER_RESPONSE,
