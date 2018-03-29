@@ -14,11 +14,10 @@ class ResultTeacher extends Component {
     if (!allResult[0]) return null
 
     return (
-      <div>
-
+      <div class='container center-align'>
         <h1>All quizzes</h1>
 
-            <div class='container center-align'>
+
               {allResult.map(x => {
                 return (
                   <div>
@@ -33,7 +32,7 @@ class ResultTeacher extends Component {
                   </div>
               )}
               )}
-                </div>
+
                 </div>
               );
             }
