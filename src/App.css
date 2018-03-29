@@ -1,4 +1,6 @@
-
+.App{
+  overflow-x: hidden;
+}
 
 .question-list{
   text-align: left;

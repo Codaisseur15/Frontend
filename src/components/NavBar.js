@@ -11,7 +11,7 @@ class NavBar extends PureComponent {
   render() {
     return (
       <nav>
-        <div class="nav-wrapper red">
+        <div class="nav-wrapper red darken-2">
           <a href="#" class="brand-logo"><i class="material-icons">create</i>Codaisseur | Teachers</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/login">Login</a></li>

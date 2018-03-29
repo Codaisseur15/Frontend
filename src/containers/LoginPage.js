@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-//import {login} from '../../actions/users'
+import {login} from '../actions/users'
 import LoginForm from '../components/LoginForm'
 import {Redirect} from 'react-router-dom'
 
@@ -14,6 +14,7 @@ class LoginPage extends PureComponent {
 		if (this.props.currentUser) return (
 			<Redirect to="/" />
 		)
+
 
 		return (
 			<div>
