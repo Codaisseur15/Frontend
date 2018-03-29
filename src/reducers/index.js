@@ -6,6 +6,7 @@ import quizResult from './teacherResult'
 import quizResponse from './teacherResponse'
 import allTeacherResult from './allTeacherResult'
 import teacherQuiz from './teacherQuiz'
+import quizzes from './quizzes'
 
 import submitButton from './submitButton'
 import showQuiz from './showQuiz'
@@ -25,4 +26,5 @@ export default {
   currentUser,
   allTeacherResult,
   teacherQuiz,
+  quizzes,
 }
