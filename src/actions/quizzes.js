@@ -5,7 +5,7 @@ export const ADD_QUIZ = 'ADD_GAME'
 export const UPDATE_QUIZZES = 'UPDATE_GAMES'
 export const UPDATE_QUIZ_SUCCESS = 'UPDATE_GAME_SUCCESS'
 
-export const getGames = () => (dispatch, getState) => {
+export const getQuizzes = () => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
 
