@@ -1,20 +1,24 @@
 import * as request from 'superagent'
+
+
 import { SHOW_STUDENT_RESULT } from './types'
 import { SHOW_STUDENT_QUIZ } from './types'
 
 
-const baseUrl = 'http://localhost:4008'
+const baseUrl_quiz = 'http://localhost:4008'
+const baseUrl_response = 'http://localhost:4001'
 
 
 export const showStudentResult = () => {
   return {
-    type: SHOW_STUDENT_RESULT
+      type: SHOW_STUDENT_RESULT
+    }
   }
-}
+
 
 export const showStudentQuiz = () => (dispatch) => {
   request
-    .get(`${baseUrl}/quizzes/1`)
+    .get(`${baseUrl_quiz}/quizzes/1`)
     .then(result => {
       dispatch({
         type: SHOW_STUDENT_QUIZ,
