@@ -6,9 +6,9 @@ const apiUrl = 'http://localhost:4001'
 const baseUrl = 'http://localhost:4008'
 
 
-export const showTeacherResult = () => (dispatch) => {
+export const showTeacherResult = (quizId, courseId) => (dispatch) => {
   request
-  .get(`${apiUrl}/results/quiz=1/course=14`)
+  .get(`${apiUrl}/results/quiz=${quizId}/course=${courseId}`)
   .then(result => {
     dispatch({
         type: SHOW_TEACHER_RESULT,
@@ -18,9 +18,9 @@ export const showTeacherResult = () => (dispatch) => {
 .catch(err => console.error(err))
 }
 
-export const showTeacherQuiz = () => (dispatch) => {
+export const showTeacherQuiz = (id) => (dispatch) => {
   request
-  .get(`${apiUrl}/results/quiz/1`)
+  .get(`${apiUrl}/results/quiz/${id}`)
   .then(result => {
     dispatch({
         type: SHOW_TEACHER_QUIZ,

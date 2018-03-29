@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {login} from '../actions/users'
 import LoginForm from '../components/LoginForm'
 import {Redirect} from 'react-router-dom'
+import './LoginPage.css'
 
 class LoginPage extends PureComponent {
 
@@ -15,13 +16,12 @@ class LoginPage extends PureComponent {
 			<Redirect to="/" />
 		)
 
+
 		return (
-			<div>
+			<div className="login-page">
 				<h1>Login</h1>
-
 				<LoginForm onSubmit={this.handleSubmit} />
-
-        { this.props.error && <span style={{color:'red'}}>{this.props.error}</span> }
+				{ this.props.error && <span style={{color:'red'}}>{this.props.error}</span> }
 			</div>
 		)
 	}
@@ -30,8 +30,8 @@ class LoginPage extends PureComponent {
 const mapStateToProps = function (state) {
 	return {
 		currentUser: state.currentUser,
-    error: state.login.error
+    //error: state.login.error
 	}
 }
 
-export default connect(mapStateToProps, {login} )(LoginPage)
+export default connect(mapStateToProps)(LoginPage)
