@@ -1,14 +1,12 @@
 import * as request from 'superagent'
 import { SHOW_TEACHER_RESULT, ALL_TEACHER_RESULT, SHOW_TEACHER_QUIZ, GET_TEACHER_RESPONSE } from './types'
 
-
-const apiUrl = 'http://localhost:4001'
-const baseUrl = 'http://localhost:4008'
+const baseUrl = 'http://localhost:4000'
 
 
 export const showTeacherResult = (quizId, courseId) => (dispatch) => {
   request
-  .get(`${apiUrl}/results/quiz=${quizId}/course=${courseId}`)
+  .get(`${baseUrl}/results/quiz=${quizId}/course=${courseId}`)
   .then(result => {
     dispatch({
         type: SHOW_TEACHER_RESULT,
@@ -18,9 +16,9 @@ export const showTeacherResult = (quizId, courseId) => (dispatch) => {
 .catch(err => console.error(err))
 }
 
-export const showTeacherQuiz = (id) => (dispatch) => {
+export const showTeacherQuiz = (quizId) => (dispatch) => {
   request
-  .get(`${apiUrl}/results/quiz/${id}`)
+  .get(`${baseUrl}/results/quiz/${quizId}`)
   .then(result => {
     dispatch({
         type: SHOW_TEACHER_QUIZ,
@@ -32,7 +30,7 @@ export const showTeacherQuiz = (id) => (dispatch) => {
 
 export const allTeacherResult = () => (dispatch) => {
   request
-    .get(`${baseUrl}/quizzes/`)
+    .get(`${baseUrl}/quizzes`)
     .then(result => {
       dispatch({
         type: ALL_TEACHER_RESULT,
@@ -42,9 +40,9 @@ export const allTeacherResult = () => (dispatch) => {
     .catch(err => console.error(err))
 }
 
-export const getTeacherResponse = () => (dispatch) => {
+export const getTeacherResponse = (quizId) => (dispatch) => {
   request
-  .get(`${apiUrl}/responses/quiz/1`)
+  .get(`${baseUrl}/responses/quizzes/${quizId}`)
   .then(result => {
     dispatch({
       type: GET_TEACHER_RESPONSE,
